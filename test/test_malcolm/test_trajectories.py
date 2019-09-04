@@ -12,7 +12,7 @@ from scanpointgenerator import SpiralGenerator, CompoundGenerator, \
 
 from malcolm.core import Process, Block
 from malcolm.yamlutil import make_include_creator
-from test.test_malcolm.plot_trajectories import plot_velocities
+from test.test_malcolm.plot_trajectories import plot_velocities_async
 from test.brick.testbrick import TBrick
 
 SAMPLE_RATE = 50  # gather samples / second
@@ -24,6 +24,8 @@ AXES = [7, 8]  # always use axes x, y which are mapped to 7, 8
 TRIGGER_NONE = 0
 TRIGGER_ROW = 1
 TRIGGER_EVERY = 2
+
+KEEP_ALIVE = None
 
 
 class TestTrajectories(TestCase):
@@ -47,6 +49,8 @@ class TestTrajectories(TestCase):
 
         self.min_interval = None
         self.min_index = None
+
+        self.t = None
 
         self.brick_connect()
 
@@ -152,15 +156,16 @@ class TestTrajectories(TestCase):
             np.insert(np.array(self.traj_block.userPrograms.value), 0, 0)
         print('trajectory arrays:-\n', p)
 
-        title += '\nPointDuration={}s Time={}s\nMinInterval={}ms' \
+        title += '  PointDuration={}s Time={}s  MinInterval={}ms' \
                  ' at {}'.format(duration, elapsed.total_seconds(),
-                                 self.min_interval/1000, self.min_index[:5]
+                                 self.min_interval / 1000, self.min_index[:5]
                                  )
         if failed:
             title = 'FAILED ' + title
-        plot_velocities(p, title=title, step_time=self.step_time,
-                        overlay=self.gather_points,
-                        x_scale=self.x_scale, y_scale=self.y_scale)
+        plot_velocities_async(
+            p, title=title, step_time=self.step_time, overlay=self.gather_points,
+            x_scale=self.x_scale, y_scale=self.y_scale
+        )
         # this is a bit naff
         self.x_scale = None
         self.y_scale = None
@@ -269,11 +274,6 @@ class TestTrajectories(TestCase):
         self.do_spiral(trigger=TRIGGER_ROW, name='Sparse Spiral')
         self.do_spiral(trigger=TRIGGER_EVERY, name='Every Point Spiral')
 
-    # def test_dummy(self)
-    #     # self.test_spiral(trigger=TRIGGER_ROW)
-    #     # self.test_spiral(trigger=TRIGGER_EVERY)
-    #     # # x=6 and y=4 combined = 8
-    #     self.Interpolation_checker(
-    #         ya=1, name='Sparse x6 y4', trigger=TRIGGER_ROW)
-    #     self.Interpolation_checker(
-    #         ya=1, name='Every Point x6 y4', trigger=TRIGGER_EVERY)
+    def test_plot(self):
+        self.skip_run = True
+        self.test_high_acceleration()

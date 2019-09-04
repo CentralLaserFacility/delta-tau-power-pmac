@@ -8,13 +8,9 @@ pytest = "*"
 
 [packages]
 dls-pmaclib = {editable = true,path = "/home/hgv27681/python3/dls_pmaclib"}
-cothread = "*"
-annotypes = {editable = true,path = "/home/hgv27681/odin/annotypes"}
-malcolm = {editable = true,path = "/home/hgv27681/odin/pymalcolm"}
-scanpointgenerator = "*"
-ruamel-yaml = "*"
-tornado = "==4.5.3"
+malcolm = {path = "/home/hgv27681/odin/pymalcolm"}
 matplotlib = "==2.2.3"
+scanpointgenerator = "==2.3"
 
 [requires]
 python_version = "3.7"

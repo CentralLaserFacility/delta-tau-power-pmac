@@ -1,8 +1,13 @@
 from enum import IntEnum
+from time import sleep
+from threading import Thread
+from queue import Queue
 
 import matplotlib.pyplot as plt
 import numpy as np
 
+# historically we used a different calculation for previous->current
+# set to True to restore the old calculation
 use_old_velocities = False
 
 
@@ -19,6 +24,48 @@ LIVE_PROGRAM = 1  # GPIO123 = 1, 0, 0
 DEAD_PROGRAM = 2  # GPIO123 = 0, 1, 0
 MID_PROGRAM = 4  # GPIO123 = 0, 0, 1
 ZERO_PROGRAM = 8  # GPIO123 = 0, 0, 0
+
+# global to shutdown interactive threads when a window closes
+CLOSED = False
+# global queue for plot requests to the plot_thread
+plot_queue = Queue()
+# a single thread to do all async plotting and to process the matplotlib event queue
+plot_thread = None
+
+
+def handle_close(evt):
+    global CLOSED
+    CLOSED = True
+
+
+def plot():
+    global CLOSED, plot_queue, plot_thread
+    CLOSED = False
+    figures = []
+    plt.ion()
+
+    while not CLOSED:
+        if not plot_queue.empty():
+            params = plot_queue.get()
+            fig1 = plot_velocities(**params)
+            fig1.canvas.mpl_connect('close_event', handle_close)
+            figures.append(fig1)
+        plt.pause(0.0001)
+        sleep(0.0001)
+
+    for fig in figures:
+        plt.close('all')
+    plot_thread = None
+
+
+def plot_velocities_async(
+        np_arrays=None, title='Plot', step_time=0.15,
+        overlay=None, x_scale=None, y_scale=None):
+    global plot_queue, plot_thread
+    if not plot_thread:
+        plot_thread = Thread(target=plot)
+        plot_thread.start()
+    plot_queue.put(locals())
 
 
 def velocity_prev_next(previous_pos, current_pos, next_pos,
@@ -52,19 +99,19 @@ def old_velocity_prev_current(previous_pos, current_pos, current_time):
     return result
 
 
-def plot_velocities(np_arrays, title='Plot', step_time=0.15,
+def plot_velocities(np_arrays=None, title='Plot', step_time=0.15,
                     overlay=None, x_scale=None, y_scale=None):
     """ plots a 2d graph of a 2 axis trajectory, also does the velocity
     calculations and plots the velocity vector at each point.
     """
     xs, ys, ts, modes, user = np_arrays
-    fig1 = plt.figure(figsize=(8, 6), dpi=300)
+    fig1 = plt.figure(num=title, figsize=(8, 6), dpi=150, frameon=False)
+
     axes = plt.gca()
     if x_scale:
         axes.set_xlim(x_scale)
     if y_scale:
         axes.set_ylim(y_scale)
-    plt.title(title)
 
     # a multiply in ms for the velocity vector
     ms = step_time / 2 * 1000000
@@ -86,8 +133,8 @@ def plot_velocities(np_arrays, title='Plot', step_time=0.15,
             vys[i] = velocity_prev_current(ys[i - 1], vys[i - 1], ys[i],
                                            ts[i])
         elif modes[i] == VelMode.CurrentNext:
-            vxs[i] = velocity_current_next(xs[i], xs[i + 1], ts[i+1])
-            vys[i] = velocity_current_next(ys[i], ys[i + 1], ts[i+1])
+            vxs[i] = velocity_current_next(xs[i], xs[i + 1], ts[i + 1])
+            vys[i] = velocity_current_next(ys[i], ys[i + 1], ts[i + 1])
 
         # plot a line to represent the velocity vector
         s = 'velocity vector {}: prev=({},{}) next=({},{}) ' \
@@ -127,4 +174,6 @@ def plot_velocities(np_arrays, title='Plot', step_time=0.15,
         plt.plot(overlay[0], overlay[1], linestyle='-', linewidth=.01,
                  marker='*', markersize=2, color='#8888ff')
 
-    plt.show()
+    plt.tight_layout()
+    plt.draw()
+    return fig1
