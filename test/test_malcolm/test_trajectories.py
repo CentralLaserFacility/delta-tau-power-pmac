@@ -156,10 +156,11 @@ class TestTrajectories(TestCase):
             np.insert(np.array(self.traj_block.userPrograms.value), 0, 0)
         print('trajectory arrays:-\n', p)
 
-        title += '  PointDuration={}s Time={}s  MinInterval={}ms' \
-                 ' at {}'.format(duration, elapsed.total_seconds(),
-                                 self.min_interval / 1000, self.min_index[:5]
-                                 )
+        seconds = elapsed.total_seconds() if elapsed else 0
+        title += '  PointDuration={}s Time={}s  MinInterval={}ms at {}'.format(
+            duration, seconds,
+            self.min_interval / 1000, self.min_index[:5]
+        )
         if failed:
             title = 'FAILED ' + title
         plot_velocities_async(

@@ -6,6 +6,10 @@ from queue import Queue
 import matplotlib.pyplot as plt
 import numpy as np
 
+# important to only call this once
+print("NOTE: setting plot library to interactive mode")
+plt.ion()
+
 # historically we used a different calculation for previous->current
 # set to True to restore the old calculation
 use_old_velocities = False
@@ -42,10 +46,15 @@ def plot():
     global CLOSED, plot_queue, plot_thread
     CLOSED = False
     figures = []
-    plt.ion()
 
     while not CLOSED:
         if not plot_queue.empty():
+            # if len(figures) > 1:
+            #     # minimize the previous plot - do this because the always
+            #     # on top behaviour is weird
+            #     # todo fix the on top behaviour instead
+            #     mng = plt.get_current_fig_manager()
+            #     mng.window.iconify()
             params = plot_queue.get()
             fig1 = plot_velocities(**params)
             fig1.canvas.mpl_connect('close_event', handle_close)
