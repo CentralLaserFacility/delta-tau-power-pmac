@@ -204,7 +204,7 @@ class pmacController
 public:
     pmacController(const char *portName, const char *lowLevelPortName, int lowLevelPortAddress,
                    int numAxes, double movingPollPeriod,
-                   double idlePollPeriod);
+                   double idlePollPeriod, int maxMessageCount);
     virtual ~pmacController();
     asynStatus checkConnection();
     asynStatus initialSetup();

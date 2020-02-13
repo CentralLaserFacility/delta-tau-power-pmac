@@ -28,6 +28,8 @@ public:
 
     std::string readValue(const std::string &key);
 
+    void setMaxCommandSize(int size);
+
     int size();
 
     std::string readCommandString(int index);
@@ -48,6 +50,7 @@ private:
     StringHashtable store;
     char commandString[100][1024];
     int qtyCmdStrings;
+    int maxPMACRequests;
 };
 
 #endif /* PMACAPP_SRC_PMACCOMMANDSTORE_H_ */

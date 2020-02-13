@@ -39,6 +39,12 @@ using std::dec;
 
 #include <epicsExport.h>
 
+// Default number of PMAC commands per message
+// For geobrick 40 commands per request string is
+// suitable.  However, for VME the value needs to
+// changed to a much lower number
+#define PMAC_CONTROLLER_DEFAULT_MAX_REQUESTS 40
+
 static const char *driverName = "pmacController";
 
 const epicsUInt32 pmacController::PMAC_MAXBUF_ = PMAC_MAXBUF;
@@ -140,7 +146,7 @@ extern "C"
 {
 asynStatus
 pmacCreateController(const char *portName, const char *lowLevelPortName, int lowLevelPortAddress,
-                     int numAxes, int movingPollPeriod, int idlePollPeriod);
+                     int numAxes, int movingPollPeriod, int idlePollPeriod, int maxPMACCommands);
 asynStatus pmacCreateAxis(const char *pmacName, int axis);
 asynStatus pmacCreateAxes(const char *pmacName, int numAxes);
 asynStatus pmacDisableLimitsCheck(const char *controller, int axis, int allAxes);
@@ -164,7 +170,8 @@ static void trajTaskC(void *drvPvt) {
  */
 pmacController::pmacController(const char *portName, const char *lowLevelPortName,
                                int lowLevelPortAddress,
-                               int numAxes, double movingPollPeriod, double idlePollPeriod)
+                               int numAxes, double movingPollPeriod, double idlePollPeriod,
+                               int maxMessageCount)
         : asynMotorController(portName, numAxes + 1, NUM_MOTOR_DRIVER_PARAMS + NUM_PMAC_PARAMS,
                               asynEnumMask | asynInt32ArrayMask, // For user mode and velocity mode
                               asynEnumMask, // No addition interrupt interfaces
@@ -221,7 +228,7 @@ pmacController::pmacController(const char *portName, const char *lowLevelPortNam
   csCount = 0;
 
   // Create the message broker
-  pBroker_ = new pmacMessageBroker(this->pasynUserSelf);
+  pBroker_ = new pmacMessageBroker(this->pasynUserSelf, maxMessageCount);
 
   // Create the hashtable for storing port to CS number mappings
   pPortToCs_ = new IntegerHashtable();
@@ -263,7 +270,7 @@ pmacController::pmacController(const char *portName, const char *lowLevelPortNam
   // Initialise the connection
   this->checkConnection();
   if (!connected_){
-    debugf(DEBUG_ERROR, "pmacController", "FAILED TO CONNECT TO CONTROLLER '%s'", portName);
+    debugf(DEBUG_ERROR, "pmacController", "FAILED TO CONNECT TO CONTROLLER '%s'", lowLevelPortName);
   }
 
   // Do nothing if we have failed to connect. Requires a restart once
@@ -4089,11 +4096,23 @@ extern "C" {
  */
 asynStatus
 pmacCreateController(const char *portName, const char *lowLevelPortName, int lowLevelPortAddress,
-                     int numAxes, int movingPollPeriod, int idlePollPeriod) {
+                     int numAxes, int movingPollPeriod, int idlePollPeriod, int maxPMACCommands) {
+
+  // Check to see if the number of PMAC commands per single message has been set
+  // If it hasn't then set the value to the default which is suitable for a geobrick
+  // PMAC VME cards cannot handle so many commands in a single message.
+  int cmdCount = 0;
+  if (maxPMACCommands <= 0){
+    cmdCount = PMAC_CONTROLLER_DEFAULT_MAX_REQUESTS;
+  } else {
+    cmdCount = maxPMACCommands;
+  }
+
   pmacController *ppmacController = new pmacController(portName, lowLevelPortName,
                                                        lowLevelPortAddress, numAxes,
                                                        movingPollPeriod / 1000.,
-                                                       idlePollPeriod / 1000.);
+                                                       idlePollPeriod / 1000.,
+                                                       cmdCount);
   ppmacController->startPMACPolling();
   ppmacController = NULL;
   return asynSuccess;
@@ -4352,17 +4371,20 @@ static const iocshArg pmacCreateControllerArg2 = {"Low level port address", iocs
 static const iocshArg pmacCreateControllerArg3 = {"Number of axes", iocshArgInt};
 static const iocshArg pmacCreateControllerArg4 = {"Moving poll rate (ms)", iocshArgInt};
 static const iocshArg pmacCreateControllerArg5 = {"Idle poll rate (ms)", iocshArgInt};
+static const iocshArg pmacCreateControllerArg6 = {"Maximum PMAC commands per message", iocshArgInt};
 static const iocshArg *const pmacCreateControllerArgs[] = {&pmacCreateControllerArg0,
                                                            &pmacCreateControllerArg1,
                                                            &pmacCreateControllerArg2,
                                                            &pmacCreateControllerArg3,
                                                            &pmacCreateControllerArg4,
-                                                           &pmacCreateControllerArg5};
-static const iocshFuncDef configpmacCreateController = {"pmacCreateController", 6,
+                                                           &pmacCreateControllerArg5,
+                                                           &pmacCreateControllerArg6};
+static const iocshFuncDef configpmacCreateController = {"pmacCreateController", 7,
                                                         pmacCreateControllerArgs};
 static void configpmacCreateControllerCallFunc(const iocshArgBuf *args) {
+
   pmacCreateController(args[0].sval, args[1].sval, args[2].ival, args[3].ival, args[4].ival,
-                       args[5].ival);
+                       args[5].ival, args[6].ival);
 }
 
 

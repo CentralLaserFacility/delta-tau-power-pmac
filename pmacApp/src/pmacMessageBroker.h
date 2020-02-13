@@ -34,7 +34,7 @@ public:
     static const epicsInt32 PMAC_FAST_READ = 2;
     static const epicsInt32 PMAC_PRE_FAST_READ = 3;
 
-    pmacMessageBroker(asynUser *pasynUser);
+    pmacMessageBroker(asynUser *pasynUser, int maxMessageCount);
 
     virtual ~pmacMessageBroker();
 

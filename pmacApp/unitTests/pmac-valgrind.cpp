@@ -37,7 +37,7 @@ int main()
 
   pmacAsynIPConfigure("BRICK1Port", "127.0.0.1:1025");
   // Create an instance of the PMAC driver
-  pmacController *pPmac = new pmacController(PMAC_PORT, "BRICK1Port", 0, 8, 0.2, 1.0);
+  pmacController *pPmac = new pmacController(PMAC_PORT, "BRICK1Port", 0, 8, 0.2, 1.0, 40);
   // Create the motor instances
   pmacAxis *pAxis1 = new pmacAxis(pPmac, 1);
   pmacAxis *pAxis2 = new pmacAxis(pPmac, 2);

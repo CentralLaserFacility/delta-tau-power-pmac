@@ -37,7 +37,7 @@ struct PMACMessageBrokerFixture
 
     pMock = new MockPMACAsynDriver(mockport.c_str(), 0.01, 1);
     pAsynUser = pasynManager->createAsynUser(0, 0);
-    pMB = new pmacMessageBroker(pAsynUser);
+    pMB = new pmacMessageBroker(pAsynUser, 40);
   }
 
   ~PMACMessageBrokerFixture()

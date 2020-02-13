@@ -10,7 +10,7 @@
 const epicsUInt32  pmacMessageBroker::PMAC_MAXBUF_ = 1024;
 const epicsFloat64 pmacMessageBroker::PMAC_TIMEOUT_ = 2.0;
 
-pmacMessageBroker::pmacMessageBroker(asynUser *pasynUser) :
+pmacMessageBroker::pmacMessageBroker(asynUser *pasynUser, int maxMessageCount) :
         pmacDebugger("pmacMessageBroker"),
         suppressStatus_(false),
         suppressCounter_(0),
@@ -30,9 +30,17 @@ pmacMessageBroker::pmacMessageBroker(asynUser *pasynUser) :
         newConnection_(true),
         disable_poll(false)
 {
+  static const char *functionName = "pmacMessageBroker";
   epicsTimeGetCurrent(&this->writeTime_);
   epicsTimeGetCurrent(&this->startTime_);
   epicsTimeGetCurrent(&this->currentTime_);
+
+  debug(DEBUG_TRACE, functionName, "Setting PMAC maximum commands per message", maxMessageCount);
+  slowStore_.setMaxCommandSize(maxMessageCount);
+  mediumStore_.setMaxCommandSize(maxMessageCount);
+  fastStore_.setMaxCommandSize(maxMessageCount);
+  prefastStore_.setMaxCommandSize(maxMessageCount);
+
   slowCallbacks_ = new pmacCallbackStore(pmacMessageBroker::PMAC_SLOW_READ);
   mediumCallbacks_ = new pmacCallbackStore(pmacMessageBroker::PMAC_MEDIUM_READ);
   fastCallbacks_ = new pmacCallbackStore(pmacMessageBroker::PMAC_FAST_READ);
@@ -86,7 +94,7 @@ asynStatus pmacMessageBroker::getConnectedStatus(int *connected, int *newConnect
   if (!connected_)
   {
     newConnection_ = true;
-    status = this->lowLevelWriteRead("", response);
+    status = this->lowLevelWriteRead("ver", response);
     connected_ = status ==asynSuccess;
     if (connected_){
       debug(DEBUG_ERROR, "getConnectedStatus", "Connection to hardware restored");
@@ -476,6 +484,7 @@ asynStatus pmacMessageBroker::lowLevelWriteRead(const char *command, char *respo
   }
 
   asynPrint(lowLevelPortUser_, ASYN_TRACEIO_DRIVER, "%s: command: %s\n", functionName, command);
+  debug(DEBUG_TRACE, "lowLevelWriteRead", "Writing", command);
 
   status = pasynOctetSyncIO->writeRead(lowLevelPortUser_,
                                        command,
@@ -489,7 +498,10 @@ asynStatus pmacMessageBroker::lowLevelWriteRead(const char *command, char *respo
 
   // If no bytes read and no eomReason then this is an error
   if (nread == 0 && eomReason == 0) {
+    debug(DEBUG_ERROR, "lowLevelWriteRead", "Nothing was read back");
     status = asynError;
+  } else {
+    debug(DEBUG_TRACE, "lowLevelWriteRead", "Read back", response);
   }
 
   if (status != asynSuccess) {

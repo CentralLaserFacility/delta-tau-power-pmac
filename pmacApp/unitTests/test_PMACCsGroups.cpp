@@ -44,7 +44,7 @@ struct PMACCsGroupsFixture
     pMock->setResponse("604020\006");
     pMock->setOnceOnly();
     //pMock->setResponse("\007ERR003\006");
-    pPmac = new pmacController(pmacport.c_str(), mockport.c_str(), 0, 8, 0.2, 1.0);
+    pPmac = new pmacController(pmacport.c_str(), mockport.c_str(), 0, 8, 0.2, 1.0, 40);
     pGroups = new pmacCsGroups(pPmac);
     // Clear the response
     pMock->setResponse("");

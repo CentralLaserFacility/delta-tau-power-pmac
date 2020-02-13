@@ -9,11 +9,12 @@
 #include <stdio.h>
 #include <string.h>
 
-#define PMAC_MAX_REQUESTS 40
+#define PMAC_DEFAULT_MAX_REQUESTS 40
 
 pmacCommandStore::pmacCommandStore() :
         pmacDebugger("pmacCommandStore"),
-        qtyCmdStrings(0) {
+        qtyCmdStrings(0),
+        maxPMACRequests(PMAC_DEFAULT_MAX_REQUESTS) {
   int index = 0;
   for (index = 0; index < 100; index++) {
     strcpy(commandString[index], "");
@@ -46,6 +47,11 @@ std::string pmacCommandStore::readValue(const std::string &key) {
 
 int pmacCommandStore::size() {
   return this->store.count();
+}
+
+void pmacCommandStore::setMaxCommandSize(int size)
+{
+  maxPMACRequests = size;
 }
 
 std::string pmacCommandStore::readCommandString(int index) {
@@ -151,7 +157,7 @@ void pmacCommandStore::buildCommandString() {
     strcpy(curStr, commandString[qtyCmdStrings]);
     sprintf(commandString[qtyCmdStrings], "%s %s", curStr, key.c_str());
     index++;
-    if (index == PMAC_MAX_REQUESTS) {
+    if (index == maxPMACRequests) {
       // Move onto next buffer
       index = 0;
       qtyCmdStrings++;
