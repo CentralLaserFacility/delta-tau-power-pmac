@@ -204,8 +204,8 @@ class GeoBrick(DeltaTau):
               _GeoBrickControllerT.ArgInfo.filtered(without = removeThese + ['PORT'])
 
     def Initialise(self):
-        print '# Configure Model 3 Controller Driver (ControlerPort, LowLevelDriverPort, Address, Axes, MovingPoll, IdlePoll)'
-        print 'pmacCreateController("%(name)s", "%(PortName)s", 0, %(NAxes)d, %(MovingPoll)d, %(IdlePoll)d)' % self.__dict__
+        print '# Configure Model 3 Controller Driver (ControlerPort, LowLevelDriverPort, Address, Axes, MovingPoll, IdlePoll, CmdsPerMessage)'
+        print 'pmacCreateController("%(name)s", "%(PortName)s", 0, %(NAxes)d, %(MovingPoll)d, %(IdlePoll)d, 40)' % self.__dict__
         print '# Configure Model 3 Axes Driver (Controler Port, Axis Count)'
         print 'pmacCreateAxes("%(name)s", %(NAxes)d)' % self.__dict__
 
@@ -272,8 +272,8 @@ class PowerPMAC(DeltaTau):
               _GeoBrickControllerT.ArgInfo.filtered(without = GeoBrick.removeThese + ['PORT'])
 
     def Initialise(self):
-        print '# Configure Model 3 Controller Driver (ControlerPort, LowLevelDriverPort, Address, Axes, MovingPoll, IdlePoll)'
-        print 'pmacCreateController("%(name)s", "%(PortName)s", 0, %(NAxes)d, %(MovingPoll)d, %(IdlePoll)d)' % self.__dict__
+        print '# Configure Model 3 Controller Driver (ControlerPort, LowLevelDriverPort, Address, Axes, MovingPoll, IdlePoll, CmdsPerMessage)'
+        print 'pmacCreateController("%(name)s", "%(PortName)s", 0, %(NAxes)d, %(MovingPoll)d, %(IdlePoll)d, 40)' % self.__dict__
         print '# Configure Model 3 Axes Driver (Controler Port, Axis Count)'
         print 'pmacCreateAxes("%(name)s", %(NAxes)d)' % self.__dict__
 
@@ -350,8 +350,8 @@ class PMAC(DeltaTau):
                     **filter_dict(args, _pmacStatusAxis.ArgInfo.Names())))
 
     def Initialise(self):
-        print '# Configure Model 3 Controller Driver (ControlerPort, LowLevelDriverPort, Address, Axes, MovingPoll, IdlePoll)'
-        print 'pmacCreateController("%(name)s", "%(PortName)s", 0, %(NAxes)d, %(MovingPoll)d, %(IdlePoll)d)' % self.__dict__
+        print '# Configure Model 3 Controller Driver (ControlerPort, LowLevelDriverPort, Address, Axes, MovingPoll, IdlePoll, CmdsPerMessage)'
+        print 'pmacCreateController("%(name)s", "%(PortName)s", 0, %(NAxes)d, %(MovingPoll)d, %(IdlePoll)d, 5)' % self.__dict__
         print '# Configure Model 3 Axes Driver (Controler Port, Axis Count)'
         print 'pmacCreateAxes("%(name)s", %(NAxes)d)' % self.__dict__
 
