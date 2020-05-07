@@ -20,8 +20,10 @@ pmac_DBD += motorSupport.dbd
 
 LIBRARY_IOC += pmacAsynMotorPort
 
+INC += pmacControllerParamSet.h
 INC += pmacController.h
 INC += pmacAxis.h
+INC += pmacCSControllerParamSet.h
 INC += pmacCSController.h
 INC += pmacCSAxis.h
 INC += pmacCSMonitor.h

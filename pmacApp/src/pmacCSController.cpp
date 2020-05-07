@@ -146,20 +146,30 @@ const std::string pmacCSController::CS_RUNTIME_ERRORS[] = {
  * @param ref A unique reference, used by the higher layer software to reference this C.S.
  * @param program The PMAC program number to run to move the C.S.
  */
-pmacCSController::pmacCSController(const char *portName, const char *controllerPortName, int csNo,
-                                   int program)
-        : asynMotorController(portName, 10, (int)NUM_MOTOR_DRIVER_PARAMS + (int)NUM_PMAC_CS_PARAMS,
-                              asynInt32ArrayMask, // For user mode and velocity mode
-                              0, // No addition interrupt interfaces
-                              ASYN_CANBLOCK | ASYN_MULTIDEVICE,
-                              1, // autoconnect
-                              0, 0),  // Default priority and stack size
-          pmacDebugger("pmacCSController"),
-          portName_(portName),
-          csNumber_(csNo),
-          progNumber_(program),
-          movesDeferred_(0),
-          csMoveTime_(0) {
+pmacCSController::pmacCSController(
+  const char *portName,
+  const char *controllerPortName,
+  int csNo,
+  int program
+) :
+  asynMotorController(
+    static_cast<asynMotorControllerParamSet*>(this), // Upcast to provide asynMotorController with its param set
+    portName,
+    10,
+    asynInt32ArrayMask, // For user mode and velocity mode
+    0, // No addition interrupt interfaces
+    ASYN_CANBLOCK | ASYN_MULTIDEVICE,
+    1, // autoconnect
+    0,
+    0  // Default priority and stack size
+  ),
+  pmacDebugger("pmacCSController"),
+  portName_(portName),
+  csNumber_(csNo),
+  progNumber_(program),
+  movesDeferred_(0),
+  csMoveTime_(0)
+{
   static const char *functionName = "pmacCSController";
 
   // Init the status
@@ -171,7 +181,7 @@ pmacCSController::pmacCSController(const char *portName, const char *controllerP
 
   pAxes_ = (pmacCSAxis **) (asynMotorController::pAxes_);
 
-  pC_ = (pmacController*) findAsynPortDriver(controllerPortName);
+  pC_ = findDerivedAsynPortDriver<pmacController>(controllerPortName);
   if (!pC_) {
     debug(DEBUG_ERROR, functionName, "ERROR port not found", controllerPortName);
   }
@@ -181,17 +191,6 @@ pmacCSController::pmacCSController(const char *portName, const char *controllerP
 
   //Create controller-specific parameters
   bool paramStatus = true;
-  createParam(PMAC_CS_FirstParamString, asynParamInt32, &PMAC_CS_FirstParam_);
-  createParam(PMAC_CS_CsMoveTimeString, asynParamFloat64, &PMAC_CS_CsMoveTime_);
-  createParam(PMAC_CS_RealMotorNumberString, asynParamInt32, &PMAC_CS_RealMotorNumber_);
-  createParam(PMAC_CS_MotorScaleString, asynParamInt32, &PMAC_CS_MotorScale_);
-  createParam(PMAC_CS_MotorResString, asynParamFloat64, &PMAC_CS_MotorRes_);
-  createParam(PMAC_CS_MotorOffsetString, asynParamFloat64, &PMAC_CS_MotorOffset_);
-  createParam(PMAC_CS_CsAbortString, asynParamInt32, &PMAC_CS_Abort_);
-  createParam(PMAC_CS_ForwardKinematicString, asynParamOctet, &PMAC_CS_ForwardKinematic_);
-  createParam(PMAC_CS_InverseKinematicString, asynParamOctet, &PMAC_CS_InverseKinematic_);
-  createParam(PMAC_CS_QVariablesString, asynParamOctet, &PMAC_CS_QVariables_);
-  createParam(PMAC_CS_LastParamString, asynParamInt32, &PMAC_CS_LastParam_);
   paramStatus = ((setDoubleParam(PMAC_CS_CsMoveTime_, csMoveTime_) == asynSuccess) && paramStatus);
   for(int index=0; index<=PMAC_CS_AXES_COUNT; index++) {
     paramStatus = ((setIntegerParam(
@@ -809,11 +808,9 @@ asynStatus pmacCreateCS(const char *portName,
 asynStatus pmacCreateCSAxis(const char *pmacName, /* specify which controller by port name */
                             int axis)             /* axis number (start from 1). */
 {
-  pmacCSController *pC;
-
   static const char *functionName = "pmacCreateCSAxis";
 
-  pC = (pmacCSController *) findAsynPortDriver(pmacName);
+  pmacCSController* pC = findDerivedAsynPortDriver<pmacCSController>(pmacName);
   if (!pC) {
     printf("%s: ERROR Port %s Not Found.\n", functionName, pmacName);
     return asynError;
@@ -842,11 +839,9 @@ asynStatus pmacCreateCSAxis(const char *pmacName, /* specify which controller by
 asynStatus pmacCreateCSAxes(const char *pmacName, /* specify which controller by port name */
                             int numAxes)          /* Number of axes to create */
 {
-  pmacCSController *pC;
-
   static const char *functionName = "pmacCreateCSAxis";
 
-  pC = (pmacCSController *) findAsynPortDriver(pmacName);
+  pmacCSController* pC = findDerivedAsynPortDriver<pmacCSController>(pmacName);
   if (!pC) {
     printf("%s: Error port %s not found\n", functionName, pmacName);
     return asynError;
@@ -867,10 +862,9 @@ asynStatus pmacCreateCSAxes(const char *pmacName, /* specify which controller by
  * @param scale Scale factor to set
  */
 asynStatus pmacCSSetAxisScale(const char *pmacCSName, int axis, int scale) {
-  pmacCSController *pC;
   static const char *functionName = "pmacSetCSAxisScale";
 
-  pC = (pmacCSController *) findAsynPortDriver(pmacCSName);
+  pmacCSController* pC = findDerivedAsynPortDriver<pmacCSController>(pmacCSName);
   if (!pC) {
     printf("%s: Error port %s not found\n", functionName, pmacCSName);
     return asynError;

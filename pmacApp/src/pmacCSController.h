@@ -21,27 +21,17 @@
 #include "pmacCallbackInterface.h"
 #include "pmacDebugger.h"
 #include "pmacHardwareInterface.h"
-
-// asyn parameter strings
-#define PMAC_CS_FirstParamString           "PMAC_CS_FIRSTPARAM"
-#define PMAC_CS_LastParamString            "PMAC_CS_LASTPARAM"
-#define PMAC_CS_CsMoveTimeString           "PMAC_C_CS_MOVE_TIME"
-#define PMAC_CS_CsAbortString              "PMAC_C_ABORT"
-// the following 2 parameters are axis parameters for both pmacController and pmacCSController
-#define PMAC_CS_RealMotorNumberString      "PMAC_REAL_MOTOR_NUMBER"
-#define PMAC_CS_MotorScaleString           "PMAC_MOTOR_SCALE"
-#define PMAC_CS_MotorResString             "PMAC_MRES"
-#define PMAC_CS_MotorOffsetString          "PMAC_OFFSET"
-#define PMAC_CS_ForwardKinematicString      "PMAC_CS_FWD_KIN"
-#define PMAC_CS_InverseKinematicString      "PMAC_CS_INV_KIN"
-#define PMAC_CS_QVariablesString            "PMAC_CS_Q_VARIABLES"
+#include "pmacCSControllerParamSet.h"
 
 #define PMAC_CS_MAXBUF 1024
 #define PMAC_CS_AXES_COUNT 9
 
-class pmacCSController
-        : public asynMotorController, public pmacCallbackInterface, public pmacDebugger {
-
+class pmacCSController :
+    public pmacCSControllerParamSet,
+    public asynMotorController,
+    public pmacCallbackInterface,
+    public pmacDebugger
+{
 public:
     pmacCSController(const char *portName, const char *controllerPortName, int csNo, int program);
     virtual ~pmacCSController();
@@ -87,20 +77,6 @@ public:
 
 protected:
     pmacCSAxis **pAxes_; // Array of pointers to axis objects
-
-    int PMAC_CS_FirstParam_;
-#define FIRST_PMAC_CS_PARAM PMAC_CS_FirstParam_
-    int PMAC_CS_CsMoveTime_;
-    int PMAC_CS_RealMotorNumber_;
-    int PMAC_CS_MotorScale_;
-    int PMAC_CS_MotorRes_;
-    int PMAC_CS_MotorOffset_;
-    int PMAC_CS_Abort_;
-    int PMAC_CS_LastParam_;
-    int PMAC_CS_ForwardKinematic_;
-    int PMAC_CS_InverseKinematic_;
-    int PMAC_CS_QVariables_;
-#define LAST_PMAC_CS_PARAM PMAC_CS_LastParam_
 
 private:
     std::string portName_;

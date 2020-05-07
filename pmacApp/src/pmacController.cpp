@@ -162,16 +162,27 @@ static void trajTaskC(void *drvPvt) {
  * @param movingPollPeriod The time (in milliseconds) between polling when axes are moving
  * @param movingPollPeriod The time (in milliseconds) between polling when axes are idle
  */
-pmacController::pmacController(const char *portName, const char *lowLevelPortName,
-                               int lowLevelPortAddress,
-                               int numAxes, double movingPollPeriod, double idlePollPeriod)
-        : asynMotorController(portName, numAxes + 1, NUM_MOTOR_DRIVER_PARAMS + NUM_PMAC_PARAMS,
-                              asynEnumMask | asynInt32ArrayMask, // For user mode and velocity mode
-                              asynEnumMask, // No addition interrupt interfaces
-                              ASYN_CANBLOCK | ASYN_MULTIDEVICE,
-                              1, // autoconnect
-                              0, 50000),  // Default priority and stack size
-          pmacDebugger("pmacController") {
+pmacController::pmacController(
+  const char *portName,
+  const char *lowLevelPortName,
+  int lowLevelPortAddress,
+  int numAxes,
+  double movingPollPeriod,
+  double idlePollPeriod
+) :
+  asynMotorController(
+    static_cast<asynMotorControllerParamSet*>(this), // Upcast to provide asynMotorController with its param set
+    portName,
+    numAxes + 1,
+    asynEnumMask | asynInt32ArrayMask, // For user mode and velocity mode
+    asynEnumMask, // No addition interrupt interfaces
+    ASYN_CANBLOCK | ASYN_MULTIDEVICE,
+    1, // autoconnect
+    0,
+    50000  // Default priority and stack size
+  ),
+  pmacDebugger("pmacController")
+{
   int index = 0;
   static const char *functionName = "pmacController::pmacController";
 
@@ -249,8 +260,6 @@ pmacController::pmacController(const char *portName, const char *lowLevelPortNam
 
   // Create the trajectory store
   pTrajectory_ = new pmacTrajectory();
-
-  createAsynParams();
 
   if (pBroker_->connect(lowLevelPortName, lowLevelPortAddress) != asynSuccess) {
     printf("%s: Failed to connect to low level asynOctetSyncIO port %s\n", functionName,
@@ -389,119 +398,6 @@ asynStatus pmacController::initialSetup() {
   }
 
   return status;
-}
-
-void pmacController::createAsynParams(void) {
-  //Create controller-specific parameters
-  createParam(PMAC_C_FirstParamString, asynParamInt32, &PMAC_C_FirstParam_);
-  createParam(PMAC_C_PollAllNowString, asynParamInt32, &PMAC_C_PollAllNow_);
-  createParam(PMAC_C_StopAllString, asynParamInt32, &PMAC_C_StopAll_);
-  createParam(PMAC_C_KillAllString, asynParamInt32, &PMAC_C_KillAll_);
-  createParam(PMAC_C_GlobalStatusString, asynParamInt32, &PMAC_C_GlobalStatus_);
-  createParam(PMAC_C_CommsErrorString, asynParamInt32, &PMAC_C_CommsError_);
-  createParam(PMAC_C_FeedRateString, asynParamInt32, &PMAC_C_FeedRate_);
-  createParam(PMAC_C_FeedRateLimitString, asynParamInt32, &PMAC_C_FeedRateLimit_);
-  createParam(PMAC_C_FeedRatePollString, asynParamInt32, &PMAC_C_FeedRatePoll_);
-  createParam(PMAC_C_FeedRateProblemString, asynParamInt32, &PMAC_C_FeedRateProblem_);
-  createParam(PMAC_C_FeedRateCSString, asynParamInt32, &PMAC_C_FeedRateCS_);
-  createParam(PMAC_C_CoordSysGroup, asynParamInt32, &PMAC_C_CoordSysGroup_);
-  createParam(PMAC_C_GroupCSPortString, asynParamInt32, &PMAC_C_GroupCSPort_);
-  createParam(PMAC_C_GroupCSPortRBVString, asynParamInt32, &PMAC_C_GroupCSPortRBV_);
-  createParam(PMAC_C_GroupAssignString, asynParamOctet, &PMAC_C_GroupAssign_);
-  createParam(PMAC_C_GroupAssignRBVString, asynParamOctet, &PMAC_C_GroupAssignRBV_);
-  createParam(PMAC_C_GroupExecuteString, asynParamInt32, &PMAC_C_GroupExecute_);
-  createParam(PMAC_C_DebugLevelString, asynParamInt32, &PMAC_C_DebugLevel_);
-  createParam(PMAC_C_DebugAxisString, asynParamInt32, &PMAC_C_DebugAxis_);
-  createParam(PMAC_C_DebugCSString, asynParamInt32, &PMAC_C_DebugCS_);
-  createParam(PMAC_C_DebugCmdString, asynParamInt32, &PMAC_C_DebugCmd_);
-  createParam(PMAC_C_DisablePollingString, asynParamInt32, &PMAC_C_DisablePolling_);
-  createParam(PMAC_C_FastUpdateTimeString, asynParamFloat64, &PMAC_C_FastUpdateTime_);
-  createParam(PMAC_C_LastParamString, asynParamInt32, &PMAC_C_LastParam_);
-  createParam(PMAC_C_CpuUsageString, asynParamFloat64, &PMAC_C_CpuUsage_);
-  createParam(PMAC_C_AxisCSString, asynParamInt32, &PMAC_C_AxisCS_);
-  createParam(PMAC_C_AxisReadonlyString, asynParamInt32, &PMAC_C_AxisReadonly_);
-  createParam(PMAC_C_WriteCmdString, asynParamOctet, &PMAC_C_WriteCmd_);
-  createParam(PMAC_C_KillAxisString, asynParamInt32, &PMAC_C_KillAxis_);
-  createParam(PMAC_C_PLCBits00String, asynParamInt32, &PMAC_C_PLCBits00_);
-  createParam(PMAC_C_PLCBits01String, asynParamInt32, &PMAC_C_PLCBits01_);
-  createParam(PMAC_C_StatusBits01String, asynParamInt32, &PMAC_C_StatusBits01_);
-  createParam(PMAC_C_StatusBits02String, asynParamInt32, &PMAC_C_StatusBits02_);
-  createParam(PMAC_C_StatusBits03String, asynParamInt32, &PMAC_C_StatusBits03_);
-  createParam(PMAC_C_GpioInputsString, asynParamInt32, &PMAC_C_GpioInputs_);
-  createParam(PMAC_C_GpioOutputsString, asynParamInt32, &PMAC_C_GpioOutputs_);
-  createParam(PMAC_C_ProgBitsString, asynParamInt32, &PMAC_C_ProgBits_);
-  createParam(PMAC_C_AxisBits01String, asynParamInt32, &PMAC_C_AxisBits01_);
-  createParam(PMAC_C_AxisBits02String, asynParamInt32, &PMAC_C_AxisBits02_);
-  createParam(PMAC_C_AxisBits03String, asynParamInt32, &PMAC_C_AxisBits03_);
-  createParam(PMAC_C_ProfileUseAxisAString, asynParamInt32, &PMAC_C_ProfileUseAxisA_);
-  createParam(PMAC_C_ProfileUseAxisBString, asynParamInt32, &PMAC_C_ProfileUseAxisB_);
-  createParam(PMAC_C_ProfileUseAxisCString, asynParamInt32, &PMAC_C_ProfileUseAxisC_);
-  createParam(PMAC_C_ProfileUseAxisUString, asynParamInt32, &PMAC_C_ProfileUseAxisU_);
-  createParam(PMAC_C_ProfileUseAxisVString, asynParamInt32, &PMAC_C_ProfileUseAxisV_);
-  createParam(PMAC_C_ProfileUseAxisWString, asynParamInt32, &PMAC_C_ProfileUseAxisW_);
-  createParam(PMAC_C_ProfileUseAxisXString, asynParamInt32, &PMAC_C_ProfileUseAxisX_);
-  createParam(PMAC_C_ProfileUseAxisYString, asynParamInt32, &PMAC_C_ProfileUseAxisY_);
-  createParam(PMAC_C_ProfileUseAxisZString, asynParamInt32, &PMAC_C_ProfileUseAxisZ_);
-  createParam(PMAC_C_ProfilePositionsAString, asynParamFloat64Array, &PMAC_C_ProfilePositionsA_);
-  createParam(PMAC_C_ProfilePositionsBString, asynParamFloat64Array, &PMAC_C_ProfilePositionsB_);
-  createParam(PMAC_C_ProfilePositionsCString, asynParamFloat64Array, &PMAC_C_ProfilePositionsC_);
-  createParam(PMAC_C_ProfilePositionsUString, asynParamFloat64Array, &PMAC_C_ProfilePositionsU_);
-  createParam(PMAC_C_ProfilePositionsVString, asynParamFloat64Array, &PMAC_C_ProfilePositionsV_);
-  createParam(PMAC_C_ProfilePositionsWString, asynParamFloat64Array, &PMAC_C_ProfilePositionsW_);
-  createParam(PMAC_C_ProfilePositionsXString, asynParamFloat64Array, &PMAC_C_ProfilePositionsX_);
-  createParam(PMAC_C_ProfilePositionsYString, asynParamFloat64Array, &PMAC_C_ProfilePositionsY_);
-  createParam(PMAC_C_ProfilePositionsZString, asynParamFloat64Array, &PMAC_C_ProfilePositionsZ_);
-  createParam(PMAC_C_ProfileAppendString, asynParamInt32, &PMAC_C_ProfileAppend_);
-  createParam(PMAC_C_ProfileAppendStateString, asynParamInt32, &PMAC_C_ProfileAppendState_);
-  createParam(PMAC_C_ProfileAppendStatusString, asynParamInt32, &PMAC_C_ProfileAppendStatus_);
-  createParam(PMAC_C_ProfileAppendMessageString, asynParamOctet, &PMAC_C_ProfileAppendMessage_);
-  createParam(PMAC_C_ProfileNumBuildString, asynParamInt32, &PMAC_C_ProfileNumBuild_);
-  createParam(PMAC_C_ProfileBuiltPointsString, asynParamInt32, &PMAC_C_ProfileBuiltPoints_);
-  createParam(PMAC_C_ProfileUserString, asynParamInt32Array, &PMAC_C_ProfileUser_);
-  createParam(PMAC_C_ProfileVelModeString, asynParamInt32Array, &PMAC_C_ProfileVelMode_);
-  createParam(PMAC_C_TrajBufferLengthString, asynParamInt32, &PMAC_C_TrajBufferLength_);
-  createParam(PMAC_C_TrajTotalPointsString, asynParamInt32, &PMAC_C_TrajTotalPoints_);
-  createParam(PMAC_C_TrajStatusString, asynParamInt32, &PMAC_C_TrajStatus_);
-  createParam(PMAC_C_TrajCurrentIndexString, asynParamInt32, &PMAC_C_TrajCurrentIndex_);
-  createParam(PMAC_C_TrajCurrentBufferString, asynParamInt32, &PMAC_C_TrajCurrentBuffer_);
-  createParam(PMAC_C_TrajBuffAdrAString, asynParamInt32, &PMAC_C_TrajBuffAdrA_);
-  createParam(PMAC_C_TrajBuffAdrBString, asynParamInt32, &PMAC_C_TrajBuffAdrB_);
-  createParam(PMAC_C_TrajBuffFillAString, asynParamInt32, &PMAC_C_TrajBuffFillA_);
-  createParam(PMAC_C_TrajBuffFillBString, asynParamInt32, &PMAC_C_TrajBuffFillB_);
-  createParam(PMAC_C_TrajRunTimeString, asynParamFloat64, &PMAC_C_TrajRunTime_);
-  createParam(PMAC_C_TrajCSNumberString, asynParamInt32, &PMAC_C_TrajCSNumber_);
-  createParam(PMAC_C_TrajCSPortString, asynParamInt32, &PMAC_C_TrajCSPort_);
-  createParam(PMAC_C_TrajPercentString, asynParamFloat64, &PMAC_C_TrajPercent_);
-  createParam(PMAC_C_TrajEStatusString, asynParamInt32, &PMAC_C_TrajEStatus_);
-  createParam(PMAC_C_TrajProgString, asynParamInt32, &PMAC_C_TrajProg_);
-  createParam(PMAC_C_TrajProgVersionString, asynParamFloat64, &PMAC_C_TrajProgVersion_);
-  createParam(PMAC_C_TrajCodeVersionString, asynParamFloat64, &PMAC_C_TrajCodeVersion_);
-  createParam(PMAC_C_NoOfMsgsString, asynParamInt32, &PMAC_C_NoOfMsgs_);
-  createParam(PMAC_C_TotalBytesWrittenString, asynParamInt32, &PMAC_C_TotalBytesWritten_);
-  createParam(PMAC_C_TotalBytesReadString, asynParamInt32, &PMAC_C_TotalBytesRead_);
-  createParam(PMAC_C_MsgBytesWrittenString, asynParamInt32, &PMAC_C_MsgBytesWritten_);
-  createParam(PMAC_C_MsgBytesReadString, asynParamInt32, &PMAC_C_MsgBytesRead_);
-  createParam(PMAC_C_MsgTimeString, asynParamInt32, &PMAC_C_MsgTime_);
-  createParam(PMAC_C_MaxBytesWrittenString, asynParamInt32, &PMAC_C_MaxBytesWritten_);
-  createParam(PMAC_C_MaxBytesReadString, asynParamInt32, &PMAC_C_MaxBytesRead_);
-  createParam(PMAC_C_MaxTimeString, asynParamInt32, &PMAC_C_MaxTime_);
-  createParam(PMAC_C_AveBytesWrittenString, asynParamInt32, &PMAC_C_AveBytesWritten_);
-  createParam(PMAC_C_AveBytesReadString, asynParamInt32, &PMAC_C_AveBytesRead_);
-  createParam(PMAC_C_AveTimeString, asynParamInt32, &PMAC_C_AveTime_);
-  createParam(PMAC_C_FastStoreString, asynParamInt32, &PMAC_C_FastStore_);
-  createParam(PMAC_C_MediumStoreString, asynParamInt32, &PMAC_C_MediumStore_);
-  createParam(PMAC_C_SlowStoreString, asynParamInt32, &PMAC_C_SlowStore_);
-  createParam(PMAC_C_ReportFastString, asynParamInt32, &PMAC_C_ReportFast_);
-  createParam(PMAC_C_ReportMediumString, asynParamInt32, &PMAC_C_ReportMedium_);
-  createParam(PMAC_C_ReportSlowString, asynParamInt32, &PMAC_C_ReportSlow_);
-  createParam(PMAC_C_HomingStatusString, asynParamInt32, &PMAC_C_HomingStatus_);
-  createParam(PMAC_C_RealMotorNumberString, asynParamInt32, &PMAC_C_RealMotorNumber_);
-  createParam(PMAC_C_MotorScaleString, asynParamInt32, &PMAC_C_MotorScale_);
-  createParam(PMAC_C_MotorResString, asynParamFloat64, &PMAC_C_MotorRes_);
-  createParam(PMAC_C_MotorOffsetString, asynParamFloat64, &PMAC_C_MotorOffset_);
-  createParam(PMAC_C_IVariablesString, asynParamOctet, &PMAC_I_Variables_);
-  createParam(PMAC_C_MVariablesString, asynParamOctet, &PMAC_M_Variables_);
-  createParam(PMAC_C_PVariablesString, asynParamOctet, &PMAC_P_Variables_);
 }
 
 void pmacController::initAsynParams(void) {
@@ -4108,11 +4004,9 @@ pmacCreateController(const char *portName, const char *lowLevelPortName, int low
 asynStatus pmacCreateAxis(const char *pmacName,         /* specify which controller by port name */
                           int axis)                    /* axis number (start from 1). */
 {
-  pmacController *pC;
-
   static const char *functionName = "pmacCreateAxis";
 
-  pC = (pmacController *) findAsynPortDriver(pmacName);
+  pmacController* pC = findDerivedAsynPortDriver<pmacController>(pmacName);
   if (!pC) {
     printf("%s::%s: ERROR Port %s Not Found.\n",
            driverName, functionName, pmacName);
@@ -4141,11 +4035,9 @@ asynStatus pmacCreateAxis(const char *pmacName,         /* specify which control
  */
 asynStatus pmacCreateAxes(const char *pmacName,
                           int numAxes) {
-  pmacController *pC;
-
   static const char *functionName = "pmacCreateAxis";
 
-  pC = (pmacController *) findAsynPortDriver(pmacName);
+  pmacController* pC = findDerivedAsynPortDriver<pmacController>(pmacName);
   if (!pC) {
     printf("%s:%s: Error port %s not found\n",
            driverName, functionName, pmacName);
@@ -4171,10 +4063,9 @@ asynStatus pmacCreateAxes(const char *pmacName,
  *                Set to 1 to do all axes (in which case the axis parameter is ignored).
  */
 asynStatus pmacDisableLimitsCheck(const char *controller, int axis, int allAxes) {
-  pmacController *pC;
   static const char *functionName = "pmacDisableLimitsCheck";
 
-  pC = (pmacController *) findAsynPortDriver(controller);
+  pmacController* pC = findDerivedAsynPortDriver<pmacController>(controller);
   if (!pC) {
     printf("%s:%s: Error port %s not found\n",
            driverName, functionName, controller);
@@ -4199,10 +4090,9 @@ asynStatus pmacDisableLimitsCheck(const char *controller, int axis, int allAxes)
  * @param scale Scale factor to set
  */
 asynStatus pmacSetAxisScale(const char *controller, int axis, int scale) {
-  pmacController *pC;
   static const char *functionName = "pmacSetAxisScale";
 
-  pC = (pmacController *) findAsynPortDriver(controller);
+  pmacController* pC = findDerivedAsynPortDriver<pmacController>(controller);
   if (!pC) {
     printf("%s:%s: Error port %s not found\n",
            driverName, functionName, controller);
@@ -4227,10 +4117,9 @@ asynStatus pmacSetAxisScale(const char *controller, int axis, int scale) {
  * @param encoder_axis The axis number that the encoder is fed into.
  */
 asynStatus pmacSetOpenLoopEncoderAxis(const char *controller, int axis, int encoder_axis) {
-  pmacController *pC;
   static const char *functionName = "pmacSetOpenLoopEncoderAxis";
 
-  pC = (pmacController *) findAsynPortDriver(controller);
+  pmacController* pC = findDerivedAsynPortDriver<pmacController>(controller);
   if (!pC) {
     printf("%s:%s: Error port %s not found\n",
            driverName, functionName, controller);
@@ -4248,10 +4137,9 @@ asynStatus pmacSetOpenLoopEncoderAxis(const char *controller, int axis, int enco
  * @param number of axes in this CS group
  */
 asynStatus pmacCreateCsGroup(const char *controller, int groupNo, char *groupName, int axisCount) {
-  pmacController *pC;
   static const char *functionName = "pmacCreateCsGroup";
 
-  pC = (pmacController *) findAsynPortDriver(controller);
+  pmacController* pC = findDerivedAsynPortDriver<pmacController>(controller);
   if (!pC) {
     printf("%s:%s: Error port %s not found\n",
            driverName, functionName, controller);
@@ -4275,10 +4163,9 @@ asynStatus pmacCreateCsGroup(const char *controller, int groupNo, char *groupNam
  */
 asynStatus pmacCsGroupAddAxis(const char *controller, int groupNo, int axisNo, char *mapping,
                               int coordinateSysNo) {
-  pmacController *pC;
   static const char *functionName = "pmacCsGroupAddAxis";
 
-  pC = (pmacController *) findAsynPortDriver(controller);
+  pmacController* pC = findDerivedAsynPortDriver<pmacController>(controller);
   if (!pC) {
     printf("%s:%s: Error port %s not found\n",
            driverName, functionName, controller);
@@ -4299,10 +4186,9 @@ asynStatus pmacCsGroupAddAxis(const char *controller, int groupNo, int axisNo, c
  *
  */
 asynStatus pmacDebug(const char *controller, int level, int axis, int csNo) {
-  pmacController *pC;
   static const char *functionName = "pmacDebug";
 
-  pC = (pmacController *) findAsynPortDriver(controller);
+  pmacController* pC = findDerivedAsynPortDriver<pmacController>(controller);
   if (!pC) {
     printf("%s:%s: Error port %s not found\n", driverName, functionName, controller);
     return asynError;
@@ -4314,10 +4200,9 @@ asynStatus pmacDebug(const char *controller, int level, int axis, int csNo) {
 }
 
 asynStatus pmacNoCsVelocity(const char *controller) {
-  pmacController *pC;
   static const char *functionName = "pmacNoCsVelocity";
 
-  pC = (pmacController *) findAsynPortDriver(controller);
+  pmacController* pC = findDerivedAsynPortDriver<pmacController>(controller);
   if (!pC) {
     printf("%s:%s: Error port %s not found\n", driverName, functionName, controller);
     return asynError;
@@ -4330,10 +4215,9 @@ asynStatus pmacNoCsVelocity(const char *controller) {
 
 asynStatus pmacMonitorVariables(const char *controller, const char *variablesString) {
   std::string variables = std::string(variablesString);
-  pmacController *pC;
   static const char *functionName = "pmacMonitorVariables";
 
-  pC = (pmacController *) findAsynPortDriver(controller);
+  pmacController* pC = findDerivedAsynPortDriver<pmacController>(controller);
   if (!pC) {
     printf("%s:%s: Error port %s not found\n", driverName, functionName, controller);
     return asynError;
