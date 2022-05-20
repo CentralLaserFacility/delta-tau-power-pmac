@@ -1,0 +1,4405 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>Device - labTop</name>
+  <width>620</width>
+  <height>400</height>
+  <background_color>
+    <color name="GLOBAL canvas" red="200" green="200" blue="200">
+    </color>
+  </background_color>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 0</name>
+    <width>621</width>
+    <height>31</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="rectangle" version="2.0.0">
+      <name>EDM activeRectangleClass</name>
+      <y>2</y>
+      <width>619</width>
+      <height>26</height>
+      <line_width>1</line_width>
+      <line_color>
+        <color name="grey-1" red="236" green="236" blue="236">
+        </color>
+      </line_color>
+      <background_color>
+        <color name="Disconn/Invalid" red="255" green="255" blue="255">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+    </widget>
+    <widget type="rectangle" version="2.0.0">
+      <name>EDM activeRectangleClass</name>
+      <x>1</x>
+      <y>3</y>
+      <width>619</width>
+      <height>26</height>
+      <line_width>1</line_width>
+      <line_color>
+        <color name="grey-11" red="90" green="90" blue="90">
+        </color>
+      </line_color>
+      <background_color>
+        <color name="Disconn/Invalid" red="255" green="255" blue="255">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>lab Top</text>
+      <x>1</x>
+      <y>3</y>
+      <width>660</width>
+      <height>25</height>
+      <font>
+        <font family="Liberation Sans" style="BOLD" size="16.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="48" red="0" green="0" blue="0">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>EDM relatedDisplayClass</name>
+      <actions>
+        <action type="open_display">
+          <file>generic-tooltip.bob</file>
+          <target>tab</target>
+        </action>
+      </actions>
+      <text></text>
+      <x>1</x>
+      <y>3</y>
+      <width>618</width>
+      <height>24</height>
+      <font>
+        <font family="Liberation Sans" style="BOLD" size="14.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="Transparent" red="255" green="255" blue="255" alpha="0">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+      <tooltip>$(actions)</tooltip>
+    </widget>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>EDM activeRectangleClass</name>
+    <x>10</x>
+    <y>45</y>
+    <width>190</width>
+    <height>105</height>
+    <line_width>1</line_width>
+    <line_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color name="Wid-alt/Anno-sec" red="174" green="174" blue="174">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM activeMessageButtonClass</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>PMAC_BRICK_TEST:MOTOR1.STOP</pv_name>
+        <value>1</value>
+        <description>STOP</description>
+      </action>
+    </actions>
+    <text>STOP</text>
+    <x>143</x>
+    <y>123</y>
+    <width>52</width>
+    <height>22</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="red-21" red="224" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="grey-4" red="187" green="187" blue="187">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>EDM activeSymbolClass</name>
+    <file>symbols-traffic-light-symbol.bob</file>
+    <x>18</x>
+    <y>96</y>
+    <width>20</width>
+    <height>20</height>
+    <resize>3</resize>
+    <group_name>EDM Group 0</group_name>
+    <transparent>true</transparent>
+    <scripts>
+      <script file="EmbeddedPy">
+        <text><![CDATA[# pvs[0] = PMAC_BRICK_TEST:MOTOR1.SEVR
+from org.csstudio.display.builder.runtime.script import PVUtil
+val = PVUtil.getDouble(pvs[0])
+if 3.0 <= val < 4.0:
+    widget.setPropertyValue('group_name', 'EDM Group 0')
+elif 0.0 <= val < 0.0:
+    widget.setPropertyValue('group_name', 'EDM Group 1')
+elif 1.0 <= val < 2.0:
+    widget.setPropertyValue('group_name', 'EDM Group 2')
+elif 2.0 <= val < 3.0:
+    widget.setPropertyValue('group_name', 'EDM Group 3')
+elif 0.0 <= val < 1.0:
+    widget.setPropertyValue('group_name', 'EDM Group 4')
+else:
+    widget.setPropertyValue('group_name', 'EDM Group 0')
+]]></text>
+        <pv_name>PMAC_BRICK_TEST:MOTOR1.SEVR</pv_name>
+      </script>
+    </scripts>
+    <tooltip>PMAC_BRICK_TEST:MOTOR1.SEVR</tooltip>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>EDM activeSymbolClass</name>
+    <file>symbols-traffic-light-symbol.bob</file>
+    <x>172</x>
+    <y>96</y>
+    <width>20</width>
+    <height>20</height>
+    <resize>3</resize>
+    <group_name>EDM Group 0</group_name>
+    <transparent>true</transparent>
+    <scripts>
+      <script file="EmbeddedPy">
+        <text><![CDATA[# pvs[0] = PMAC_BRICK_TEST:MOTOR1.DMOV
+from org.csstudio.display.builder.runtime.script import PVUtil
+val = PVUtil.getDouble(pvs[0])
+if 0.0 <= val < 0.0:
+    widget.setPropertyValue('group_name', 'EDM Group 0')
+elif 0.0 <= val < 0.0:
+    widget.setPropertyValue('group_name', 'EDM Group 1')
+elif 0.0 <= val < 0.0:
+    widget.setPropertyValue('group_name', 'EDM Group 2')
+elif 0.0 <= val < 0.0:
+    widget.setPropertyValue('group_name', 'EDM Group 3')
+elif 1.0 <= val < 2.0:
+    widget.setPropertyValue('group_name', 'EDM Group 4')
+elif 0.0 <= val < 1.0:
+    widget.setPropertyValue('group_name', 'EDM Group 5')
+else:
+    widget.setPropertyValue('group_name', 'EDM Group 0')
+]]></text>
+        <pv_name>PMAC_BRICK_TEST:MOTOR1.DMOV</pv_name>
+      </script>
+    </scripts>
+    <tooltip>PMAC_BRICK_TEST:MOTOR1.DMOV</tooltip>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM relatedDisplayClass</name>
+    <actions>
+      <action type="open_display">
+        <file>motor.bob</file>
+        <macros>
+          <motor>PMAC_BRICK_TEST:MOTOR1</motor>
+        </macros>
+        <target>tab</target>
+      </action>
+    </actions>
+    <text>More</text>
+    <x>15</x>
+    <y>123</y>
+    <width>52</width>
+    <height>22</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="brown-43" red="160" green="110" blue="60">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>EDM activeXTextClass</name>
+    <text>Motor 1-&gt;A</text>
+    <x>10</x>
+    <y>40</y>
+    <width>55</width>
+    <height>14</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="11.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="grey-8" red="133" green="133" blue="133">
+      </color>
+    </background_color>
+    <transparent>false</transparent>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>EDM activeXTextDspClass</name>
+    <pv_name>PMAC_BRICK_TEST:MOTOR1.TWV</pv_name>
+    <x>75</x>
+    <y>125</y>
+    <width>60</width>
+    <height>16</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <show_units>false</show_units>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM activeMessageButtonClass</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>PMAC_BRICK_TEST:MOTOR1.TWR</pv_name>
+        <value>1</value>
+        <description>-</description>
+      </action>
+    </actions>
+    <text>-</text>
+    <x>15</x>
+    <y>61</y>
+    <width>43</width>
+    <height>29</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="24.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Controller" red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="grey-4" red="187" green="187" blue="187">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>EDM TextentryClass</name>
+    <pv_name>PMAC_BRICK_TEST:MOTOR1</pv_name>
+    <x>63</x>
+    <y>59</y>
+    <width>83</width>
+    <height>33</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Controller" red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>4</precision>
+    <show_units>false</show_units>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM activeMessageButtonClass</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>PMAC_BRICK_TEST:MOTOR1.TWF</pv_name>
+        <value>1</value>
+        <description>+</description>
+      </action>
+    </actions>
+    <text>+</text>
+    <x>151</x>
+    <y>61</y>
+    <width>43</width>
+    <height>29</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Controller" red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="grey-4" red="187" green="187" blue="187">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="combo" version="2.0.0">
+    <name>EDM activeMenuButtonClass</name>
+    <pv_name>PMAC_BRICK_TEST:MOTOR1.SPMG</pv_name>
+    <x>151</x>
+    <y>46</y>
+    <width>43</width>
+    <height>13</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="8.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Controller" red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>EDM TextupdateClass</name>
+    <pv_name>PMAC_BRICK_TEST:MOTOR1.RBV</pv_name>
+    <x>48</x>
+    <y>97</y>
+    <width>115</width>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Monitor: NORMAL" red="0" green="255" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+      </color>
+    </background_color>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 1</name>
+    <x>131</x>
+    <y>46</y>
+    <width>19</width>
+    <height>12</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=0.0 &amp;&amp; pv0&lt;1.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>PMAC_BRICK_TEST:MOTOR1:KILL</pv_name>
+      </rule>
+    </rules>
+    <widget type="action_button" version="3.0.0">
+      <name>EDM activeMessageButtonClass</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>PMAC_BRICK_TEST:MOTOR1:KILL.PROC</pv_name>
+          <value>1</value>
+          <description>Kill</description>
+        </action>
+      </actions>
+      <text>Kill</text>
+      <width>18</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="8.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="Mon: MAJOR/unack" red="192" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="grey-4" red="187" green="187" blue="187">
+        </color>
+      </background_color>
+      <tooltip>$(actions)</tooltip>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 2</name>
+    <x>168</x>
+    <y>96</y>
+    <width>29</width>
+    <height>22</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=2.0 &amp;&amp; pv0&lt;3.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>=`PMAC_BRICK_TEST:MOTOR1:ELOSS`&amp;2</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>ALoss</text>
+      <width>28</width>
+      <height>21</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="red-21" red="224" green="0" blue="0">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 3</name>
+    <x>168</x>
+    <y>96</y>
+    <width>29</width>
+    <height>22</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=4.0 &amp;&amp; pv0&lt;5.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>=`PMAC_BRICK_TEST:MOTOR1:ELOSS`&amp;4</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>SFail</text>
+      <width>28</width>
+      <height>21</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="red-21" red="224" green="0" blue="0">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 4</name>
+    <x>168</x>
+    <y>96</y>
+    <width>29</width>
+    <height>22</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=1.0 &amp;&amp; pv0&lt;2.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>=`PMAC_BRICK_TEST:MOTOR1:ELOSS`&amp;1</pv_name>
+      </rule>
+    </rules>
+    <widget type="action_button" version="3.0.0">
+      <name>EDM activeMessageButtonClass</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>PMAC_BRICK_TEST:MOTOR1:ELOSSRC.A</pv_name>
+          <value>0</value>
+          <description>Eloss</description>
+        </action>
+      </actions>
+      <text>Eloss</text>
+      <width>28</width>
+      <height>21</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="8.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="red-21" red="224" green="0" blue="0">
+        </color>
+      </background_color>
+      <tooltip>$(actions)</tooltip>
+    </widget>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>EDM activeRectangleClass</name>
+    <x>10</x>
+    <y>165</y>
+    <width>190</width>
+    <height>105</height>
+    <line_width>1</line_width>
+    <line_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color name="Wid-alt/Anno-sec" red="174" green="174" blue="174">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM activeMessageButtonClass</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>PMAC_BRICK_TEST:MOTOR2.STOP</pv_name>
+        <value>1</value>
+        <description>STOP</description>
+      </action>
+    </actions>
+    <text>STOP</text>
+    <x>143</x>
+    <y>243</y>
+    <width>52</width>
+    <height>22</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="red-21" red="224" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="grey-4" red="187" green="187" blue="187">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>EDM activeSymbolClass</name>
+    <file>symbols-traffic-light-symbol.bob</file>
+    <x>18</x>
+    <y>216</y>
+    <width>20</width>
+    <height>20</height>
+    <resize>3</resize>
+    <group_name>EDM Group 0</group_name>
+    <transparent>true</transparent>
+    <scripts>
+      <script file="EmbeddedPy">
+        <text><![CDATA[# pvs[0] = PMAC_BRICK_TEST:MOTOR2.SEVR
+from org.csstudio.display.builder.runtime.script import PVUtil
+val = PVUtil.getDouble(pvs[0])
+if 3.0 <= val < 4.0:
+    widget.setPropertyValue('group_name', 'EDM Group 0')
+elif 0.0 <= val < 0.0:
+    widget.setPropertyValue('group_name', 'EDM Group 1')
+elif 1.0 <= val < 2.0:
+    widget.setPropertyValue('group_name', 'EDM Group 2')
+elif 2.0 <= val < 3.0:
+    widget.setPropertyValue('group_name', 'EDM Group 3')
+elif 0.0 <= val < 1.0:
+    widget.setPropertyValue('group_name', 'EDM Group 4')
+else:
+    widget.setPropertyValue('group_name', 'EDM Group 0')
+]]></text>
+        <pv_name>PMAC_BRICK_TEST:MOTOR2.SEVR</pv_name>
+      </script>
+    </scripts>
+    <tooltip>PMAC_BRICK_TEST:MOTOR2.SEVR</tooltip>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>EDM activeSymbolClass</name>
+    <file>symbols-traffic-light-symbol.bob</file>
+    <x>172</x>
+    <y>216</y>
+    <width>20</width>
+    <height>20</height>
+    <resize>3</resize>
+    <group_name>EDM Group 0</group_name>
+    <transparent>true</transparent>
+    <scripts>
+      <script file="EmbeddedPy">
+        <text><![CDATA[# pvs[0] = PMAC_BRICK_TEST:MOTOR2.DMOV
+from org.csstudio.display.builder.runtime.script import PVUtil
+val = PVUtil.getDouble(pvs[0])
+if 0.0 <= val < 0.0:
+    widget.setPropertyValue('group_name', 'EDM Group 0')
+elif 0.0 <= val < 0.0:
+    widget.setPropertyValue('group_name', 'EDM Group 1')
+elif 0.0 <= val < 0.0:
+    widget.setPropertyValue('group_name', 'EDM Group 2')
+elif 0.0 <= val < 0.0:
+    widget.setPropertyValue('group_name', 'EDM Group 3')
+elif 1.0 <= val < 2.0:
+    widget.setPropertyValue('group_name', 'EDM Group 4')
+elif 0.0 <= val < 1.0:
+    widget.setPropertyValue('group_name', 'EDM Group 5')
+else:
+    widget.setPropertyValue('group_name', 'EDM Group 0')
+]]></text>
+        <pv_name>PMAC_BRICK_TEST:MOTOR2.DMOV</pv_name>
+      </script>
+    </scripts>
+    <tooltip>PMAC_BRICK_TEST:MOTOR2.DMOV</tooltip>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM relatedDisplayClass</name>
+    <actions>
+      <action type="open_display">
+        <file>motor.bob</file>
+        <macros>
+          <motor>PMAC_BRICK_TEST:MOTOR2</motor>
+        </macros>
+        <target>tab</target>
+      </action>
+    </actions>
+    <text>More</text>
+    <x>15</x>
+    <y>243</y>
+    <width>52</width>
+    <height>22</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="brown-43" red="160" green="110" blue="60">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>EDM activeXTextClass</name>
+    <text>Motor 2-&gt;B</text>
+    <x>10</x>
+    <y>160</y>
+    <width>55</width>
+    <height>14</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="11.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="grey-8" red="133" green="133" blue="133">
+      </color>
+    </background_color>
+    <transparent>false</transparent>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>EDM activeXTextDspClass</name>
+    <pv_name>PMAC_BRICK_TEST:MOTOR2.TWV</pv_name>
+    <x>75</x>
+    <y>245</y>
+    <width>60</width>
+    <height>16</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <show_units>false</show_units>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM activeMessageButtonClass</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>PMAC_BRICK_TEST:MOTOR2.TWR</pv_name>
+        <value>1</value>
+        <description>-</description>
+      </action>
+    </actions>
+    <text>-</text>
+    <x>15</x>
+    <y>181</y>
+    <width>43</width>
+    <height>29</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="24.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Controller" red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="grey-4" red="187" green="187" blue="187">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>EDM TextentryClass</name>
+    <pv_name>PMAC_BRICK_TEST:MOTOR2</pv_name>
+    <x>63</x>
+    <y>179</y>
+    <width>83</width>
+    <height>33</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Controller" red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>4</precision>
+    <show_units>false</show_units>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM activeMessageButtonClass</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>PMAC_BRICK_TEST:MOTOR2.TWF</pv_name>
+        <value>1</value>
+        <description>+</description>
+      </action>
+    </actions>
+    <text>+</text>
+    <x>151</x>
+    <y>181</y>
+    <width>43</width>
+    <height>29</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Controller" red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="grey-4" red="187" green="187" blue="187">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="combo" version="2.0.0">
+    <name>EDM activeMenuButtonClass</name>
+    <pv_name>PMAC_BRICK_TEST:MOTOR2.SPMG</pv_name>
+    <x>151</x>
+    <y>166</y>
+    <width>43</width>
+    <height>13</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="8.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Controller" red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>EDM TextupdateClass</name>
+    <pv_name>PMAC_BRICK_TEST:MOTOR2.RBV</pv_name>
+    <x>48</x>
+    <y>217</y>
+    <width>115</width>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Monitor: NORMAL" red="0" green="255" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+      </color>
+    </background_color>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 5</name>
+    <x>131</x>
+    <y>166</y>
+    <width>19</width>
+    <height>12</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=0.0 &amp;&amp; pv0&lt;1.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>PMAC_BRICK_TEST:MOTOR2:KILL</pv_name>
+      </rule>
+    </rules>
+    <widget type="action_button" version="3.0.0">
+      <name>EDM activeMessageButtonClass</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>PMAC_BRICK_TEST:MOTOR2:KILL.PROC</pv_name>
+          <value>1</value>
+          <description>Kill</description>
+        </action>
+      </actions>
+      <text>Kill</text>
+      <width>18</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="8.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="Mon: MAJOR/unack" red="192" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="grey-4" red="187" green="187" blue="187">
+        </color>
+      </background_color>
+      <tooltip>$(actions)</tooltip>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 6</name>
+    <x>168</x>
+    <y>216</y>
+    <width>29</width>
+    <height>22</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=2.0 &amp;&amp; pv0&lt;3.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>=`PMAC_BRICK_TEST:MOTOR2:ELOSS`&amp;2</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>ALoss</text>
+      <width>28</width>
+      <height>21</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="red-21" red="224" green="0" blue="0">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 7</name>
+    <x>168</x>
+    <y>216</y>
+    <width>29</width>
+    <height>22</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=4.0 &amp;&amp; pv0&lt;5.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>=`PMAC_BRICK_TEST:MOTOR2:ELOSS`&amp;4</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>SFail</text>
+      <width>28</width>
+      <height>21</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="red-21" red="224" green="0" blue="0">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 8</name>
+    <x>168</x>
+    <y>216</y>
+    <width>29</width>
+    <height>22</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=1.0 &amp;&amp; pv0&lt;2.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>=`PMAC_BRICK_TEST:MOTOR2:ELOSS`&amp;1</pv_name>
+      </rule>
+    </rules>
+    <widget type="action_button" version="3.0.0">
+      <name>EDM activeMessageButtonClass</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>PMAC_BRICK_TEST:MOTOR2:ELOSSRC.A</pv_name>
+          <value>0</value>
+          <description>Eloss</description>
+        </action>
+      </actions>
+      <text>Eloss</text>
+      <width>28</width>
+      <height>21</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="8.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="red-21" red="224" green="0" blue="0">
+        </color>
+      </background_color>
+      <tooltip>$(actions)</tooltip>
+    </widget>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>EDM activeRectangleClass</name>
+    <x>10</x>
+    <y>285</y>
+    <width>190</width>
+    <height>105</height>
+    <line_width>1</line_width>
+    <line_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color name="Wid-alt/Anno-sec" red="174" green="174" blue="174">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM activeMessageButtonClass</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>PMAC_BRICK_TEST:MOTOR3.STOP</pv_name>
+        <value>1</value>
+        <description>STOP</description>
+      </action>
+    </actions>
+    <text>STOP</text>
+    <x>143</x>
+    <y>363</y>
+    <width>52</width>
+    <height>22</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="red-21" red="224" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="grey-4" red="187" green="187" blue="187">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>EDM activeSymbolClass</name>
+    <file>symbols-traffic-light-symbol.bob</file>
+    <x>18</x>
+    <y>336</y>
+    <width>20</width>
+    <height>20</height>
+    <resize>3</resize>
+    <group_name>EDM Group 0</group_name>
+    <transparent>true</transparent>
+    <scripts>
+      <script file="EmbeddedPy">
+        <text><![CDATA[# pvs[0] = PMAC_BRICK_TEST:MOTOR3.SEVR
+from org.csstudio.display.builder.runtime.script import PVUtil
+val = PVUtil.getDouble(pvs[0])
+if 3.0 <= val < 4.0:
+    widget.setPropertyValue('group_name', 'EDM Group 0')
+elif 0.0 <= val < 0.0:
+    widget.setPropertyValue('group_name', 'EDM Group 1')
+elif 1.0 <= val < 2.0:
+    widget.setPropertyValue('group_name', 'EDM Group 2')
+elif 2.0 <= val < 3.0:
+    widget.setPropertyValue('group_name', 'EDM Group 3')
+elif 0.0 <= val < 1.0:
+    widget.setPropertyValue('group_name', 'EDM Group 4')
+else:
+    widget.setPropertyValue('group_name', 'EDM Group 0')
+]]></text>
+        <pv_name>PMAC_BRICK_TEST:MOTOR3.SEVR</pv_name>
+      </script>
+    </scripts>
+    <tooltip>PMAC_BRICK_TEST:MOTOR3.SEVR</tooltip>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>EDM activeSymbolClass</name>
+    <file>symbols-traffic-light-symbol.bob</file>
+    <x>172</x>
+    <y>336</y>
+    <width>20</width>
+    <height>20</height>
+    <resize>3</resize>
+    <group_name>EDM Group 0</group_name>
+    <transparent>true</transparent>
+    <scripts>
+      <script file="EmbeddedPy">
+        <text><![CDATA[# pvs[0] = PMAC_BRICK_TEST:MOTOR3.DMOV
+from org.csstudio.display.builder.runtime.script import PVUtil
+val = PVUtil.getDouble(pvs[0])
+if 0.0 <= val < 0.0:
+    widget.setPropertyValue('group_name', 'EDM Group 0')
+elif 0.0 <= val < 0.0:
+    widget.setPropertyValue('group_name', 'EDM Group 1')
+elif 0.0 <= val < 0.0:
+    widget.setPropertyValue('group_name', 'EDM Group 2')
+elif 0.0 <= val < 0.0:
+    widget.setPropertyValue('group_name', 'EDM Group 3')
+elif 1.0 <= val < 2.0:
+    widget.setPropertyValue('group_name', 'EDM Group 4')
+elif 0.0 <= val < 1.0:
+    widget.setPropertyValue('group_name', 'EDM Group 5')
+else:
+    widget.setPropertyValue('group_name', 'EDM Group 0')
+]]></text>
+        <pv_name>PMAC_BRICK_TEST:MOTOR3.DMOV</pv_name>
+      </script>
+    </scripts>
+    <tooltip>PMAC_BRICK_TEST:MOTOR3.DMOV</tooltip>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM relatedDisplayClass</name>
+    <actions>
+      <action type="open_display">
+        <file>motor.bob</file>
+        <macros>
+          <motor>PMAC_BRICK_TEST:MOTOR3</motor>
+        </macros>
+        <target>tab</target>
+      </action>
+    </actions>
+    <text>More</text>
+    <x>15</x>
+    <y>363</y>
+    <width>52</width>
+    <height>22</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="brown-43" red="160" green="110" blue="60">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>EDM activeXTextClass</name>
+    <text>Motor 3-&gt;I JACK 1</text>
+    <x>10</x>
+    <y>280</y>
+    <width>91</width>
+    <height>14</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="11.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="grey-8" red="133" green="133" blue="133">
+      </color>
+    </background_color>
+    <transparent>false</transparent>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>EDM activeXTextDspClass</name>
+    <pv_name>PMAC_BRICK_TEST:MOTOR3.TWV</pv_name>
+    <x>75</x>
+    <y>365</y>
+    <width>60</width>
+    <height>16</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <show_units>false</show_units>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM activeMessageButtonClass</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>PMAC_BRICK_TEST:MOTOR3.TWR</pv_name>
+        <value>1</value>
+        <description>-</description>
+      </action>
+    </actions>
+    <text>-</text>
+    <x>15</x>
+    <y>301</y>
+    <width>43</width>
+    <height>29</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="24.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Controller" red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="grey-4" red="187" green="187" blue="187">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>EDM TextentryClass</name>
+    <pv_name>PMAC_BRICK_TEST:MOTOR3</pv_name>
+    <x>63</x>
+    <y>299</y>
+    <width>83</width>
+    <height>33</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Controller" red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>4</precision>
+    <show_units>false</show_units>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM activeMessageButtonClass</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>PMAC_BRICK_TEST:MOTOR3.TWF</pv_name>
+        <value>1</value>
+        <description>+</description>
+      </action>
+    </actions>
+    <text>+</text>
+    <x>151</x>
+    <y>301</y>
+    <width>43</width>
+    <height>29</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Controller" red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="grey-4" red="187" green="187" blue="187">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="combo" version="2.0.0">
+    <name>EDM activeMenuButtonClass</name>
+    <pv_name>PMAC_BRICK_TEST:MOTOR3.SPMG</pv_name>
+    <x>151</x>
+    <y>286</y>
+    <width>43</width>
+    <height>13</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="8.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Controller" red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>EDM TextupdateClass</name>
+    <pv_name>PMAC_BRICK_TEST:MOTOR3.RBV</pv_name>
+    <x>48</x>
+    <y>337</y>
+    <width>115</width>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Monitor: NORMAL" red="0" green="255" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+      </color>
+    </background_color>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 9</name>
+    <x>131</x>
+    <y>286</y>
+    <width>19</width>
+    <height>12</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=0.0 &amp;&amp; pv0&lt;1.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>PMAC_BRICK_TEST:MOTOR3:KILL</pv_name>
+      </rule>
+    </rules>
+    <widget type="action_button" version="3.0.0">
+      <name>EDM activeMessageButtonClass</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>PMAC_BRICK_TEST:MOTOR3:KILL.PROC</pv_name>
+          <value>1</value>
+          <description>Kill</description>
+        </action>
+      </actions>
+      <text>Kill</text>
+      <width>18</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="8.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="Mon: MAJOR/unack" red="192" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="grey-4" red="187" green="187" blue="187">
+        </color>
+      </background_color>
+      <tooltip>$(actions)</tooltip>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 10</name>
+    <x>168</x>
+    <y>336</y>
+    <width>29</width>
+    <height>22</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=2.0 &amp;&amp; pv0&lt;3.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>=`PMAC_BRICK_TEST:MOTOR3:ELOSS`&amp;2</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>ALoss</text>
+      <width>28</width>
+      <height>21</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="red-21" red="224" green="0" blue="0">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 11</name>
+    <x>168</x>
+    <y>336</y>
+    <width>29</width>
+    <height>22</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=4.0 &amp;&amp; pv0&lt;5.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>=`PMAC_BRICK_TEST:MOTOR3:ELOSS`&amp;4</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>SFail</text>
+      <width>28</width>
+      <height>21</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="red-21" red="224" green="0" blue="0">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 12</name>
+    <x>168</x>
+    <y>336</y>
+    <width>29</width>
+    <height>22</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=1.0 &amp;&amp; pv0&lt;2.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>=`PMAC_BRICK_TEST:MOTOR3:ELOSS`&amp;1</pv_name>
+      </rule>
+    </rules>
+    <widget type="action_button" version="3.0.0">
+      <name>EDM activeMessageButtonClass</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>PMAC_BRICK_TEST:MOTOR3:ELOSSRC.A</pv_name>
+          <value>0</value>
+          <description>Eloss</description>
+        </action>
+      </actions>
+      <text>Eloss</text>
+      <width>28</width>
+      <height>21</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="8.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="red-21" red="224" green="0" blue="0">
+        </color>
+      </background_color>
+      <tooltip>$(actions)</tooltip>
+    </widget>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>EDM activeRectangleClass</name>
+    <x>215</x>
+    <y>45</y>
+    <width>190</width>
+    <height>105</height>
+    <line_width>1</line_width>
+    <line_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color name="Wid-alt/Anno-sec" red="174" green="174" blue="174">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM activeMessageButtonClass</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>PMAC_BRICK_TEST:MOTOR4.STOP</pv_name>
+        <value>1</value>
+        <description>STOP</description>
+      </action>
+    </actions>
+    <text>STOP</text>
+    <x>348</x>
+    <y>123</y>
+    <width>52</width>
+    <height>22</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="red-21" red="224" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="grey-4" red="187" green="187" blue="187">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>EDM activeSymbolClass</name>
+    <file>symbols-traffic-light-symbol.bob</file>
+    <x>223</x>
+    <y>96</y>
+    <width>20</width>
+    <height>20</height>
+    <resize>3</resize>
+    <group_name>EDM Group 0</group_name>
+    <transparent>true</transparent>
+    <scripts>
+      <script file="EmbeddedPy">
+        <text><![CDATA[# pvs[0] = PMAC_BRICK_TEST:MOTOR4.SEVR
+from org.csstudio.display.builder.runtime.script import PVUtil
+val = PVUtil.getDouble(pvs[0])
+if 3.0 <= val < 4.0:
+    widget.setPropertyValue('group_name', 'EDM Group 0')
+elif 0.0 <= val < 0.0:
+    widget.setPropertyValue('group_name', 'EDM Group 1')
+elif 1.0 <= val < 2.0:
+    widget.setPropertyValue('group_name', 'EDM Group 2')
+elif 2.0 <= val < 3.0:
+    widget.setPropertyValue('group_name', 'EDM Group 3')
+elif 0.0 <= val < 1.0:
+    widget.setPropertyValue('group_name', 'EDM Group 4')
+else:
+    widget.setPropertyValue('group_name', 'EDM Group 0')
+]]></text>
+        <pv_name>PMAC_BRICK_TEST:MOTOR4.SEVR</pv_name>
+      </script>
+    </scripts>
+    <tooltip>PMAC_BRICK_TEST:MOTOR4.SEVR</tooltip>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>EDM activeSymbolClass</name>
+    <file>symbols-traffic-light-symbol.bob</file>
+    <x>377</x>
+    <y>96</y>
+    <width>20</width>
+    <height>20</height>
+    <resize>3</resize>
+    <group_name>EDM Group 0</group_name>
+    <transparent>true</transparent>
+    <scripts>
+      <script file="EmbeddedPy">
+        <text><![CDATA[# pvs[0] = PMAC_BRICK_TEST:MOTOR4.DMOV
+from org.csstudio.display.builder.runtime.script import PVUtil
+val = PVUtil.getDouble(pvs[0])
+if 0.0 <= val < 0.0:
+    widget.setPropertyValue('group_name', 'EDM Group 0')
+elif 0.0 <= val < 0.0:
+    widget.setPropertyValue('group_name', 'EDM Group 1')
+elif 0.0 <= val < 0.0:
+    widget.setPropertyValue('group_name', 'EDM Group 2')
+elif 0.0 <= val < 0.0:
+    widget.setPropertyValue('group_name', 'EDM Group 3')
+elif 1.0 <= val < 2.0:
+    widget.setPropertyValue('group_name', 'EDM Group 4')
+elif 0.0 <= val < 1.0:
+    widget.setPropertyValue('group_name', 'EDM Group 5')
+else:
+    widget.setPropertyValue('group_name', 'EDM Group 0')
+]]></text>
+        <pv_name>PMAC_BRICK_TEST:MOTOR4.DMOV</pv_name>
+      </script>
+    </scripts>
+    <tooltip>PMAC_BRICK_TEST:MOTOR4.DMOV</tooltip>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM relatedDisplayClass</name>
+    <actions>
+      <action type="open_display">
+        <file>motor.bob</file>
+        <macros>
+          <motor>PMAC_BRICK_TEST:MOTOR4</motor>
+        </macros>
+        <target>tab</target>
+      </action>
+    </actions>
+    <text>More</text>
+    <x>220</x>
+    <y>123</y>
+    <width>52</width>
+    <height>22</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="brown-43" red="160" green="110" blue="60">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>EDM activeXTextClass</name>
+    <text>Motor 4-&gt;I- JACK 2</text>
+    <x>215</x>
+    <y>40</y>
+    <width>95</width>
+    <height>14</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="11.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="grey-8" red="133" green="133" blue="133">
+      </color>
+    </background_color>
+    <transparent>false</transparent>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>EDM activeXTextDspClass</name>
+    <pv_name>PMAC_BRICK_TEST:MOTOR4.TWV</pv_name>
+    <x>280</x>
+    <y>125</y>
+    <width>60</width>
+    <height>16</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <show_units>false</show_units>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM activeMessageButtonClass</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>PMAC_BRICK_TEST:MOTOR4.TWR</pv_name>
+        <value>1</value>
+        <description>-</description>
+      </action>
+    </actions>
+    <text>-</text>
+    <x>220</x>
+    <y>61</y>
+    <width>43</width>
+    <height>29</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="24.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Controller" red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="grey-4" red="187" green="187" blue="187">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>EDM TextentryClass</name>
+    <pv_name>PMAC_BRICK_TEST:MOTOR4</pv_name>
+    <x>268</x>
+    <y>59</y>
+    <width>83</width>
+    <height>33</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Controller" red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>4</precision>
+    <show_units>false</show_units>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM activeMessageButtonClass</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>PMAC_BRICK_TEST:MOTOR4.TWF</pv_name>
+        <value>1</value>
+        <description>+</description>
+      </action>
+    </actions>
+    <text>+</text>
+    <x>356</x>
+    <y>61</y>
+    <width>43</width>
+    <height>29</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Controller" red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="grey-4" red="187" green="187" blue="187">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="combo" version="2.0.0">
+    <name>EDM activeMenuButtonClass</name>
+    <pv_name>PMAC_BRICK_TEST:MOTOR4.SPMG</pv_name>
+    <x>356</x>
+    <y>46</y>
+    <width>43</width>
+    <height>13</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="8.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Controller" red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>EDM TextupdateClass</name>
+    <pv_name>PMAC_BRICK_TEST:MOTOR4.RBV</pv_name>
+    <x>253</x>
+    <y>97</y>
+    <width>115</width>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Monitor: NORMAL" red="0" green="255" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+      </color>
+    </background_color>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 13</name>
+    <x>336</x>
+    <y>46</y>
+    <width>19</width>
+    <height>12</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=0.0 &amp;&amp; pv0&lt;1.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>PMAC_BRICK_TEST:MOTOR4:KILL</pv_name>
+      </rule>
+    </rules>
+    <widget type="action_button" version="3.0.0">
+      <name>EDM activeMessageButtonClass</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>PMAC_BRICK_TEST:MOTOR4:KILL.PROC</pv_name>
+          <value>1</value>
+          <description>Kill</description>
+        </action>
+      </actions>
+      <text>Kill</text>
+      <width>18</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="8.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="Mon: MAJOR/unack" red="192" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="grey-4" red="187" green="187" blue="187">
+        </color>
+      </background_color>
+      <tooltip>$(actions)</tooltip>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 14</name>
+    <x>373</x>
+    <y>96</y>
+    <width>29</width>
+    <height>22</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=2.0 &amp;&amp; pv0&lt;3.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>=`PMAC_BRICK_TEST:MOTOR4:ELOSS`&amp;2</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>ALoss</text>
+      <width>28</width>
+      <height>21</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="red-21" red="224" green="0" blue="0">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 15</name>
+    <x>373</x>
+    <y>96</y>
+    <width>29</width>
+    <height>22</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=4.0 &amp;&amp; pv0&lt;5.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>=`PMAC_BRICK_TEST:MOTOR4:ELOSS`&amp;4</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>SFail</text>
+      <width>28</width>
+      <height>21</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="red-21" red="224" green="0" blue="0">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 16</name>
+    <x>373</x>
+    <y>96</y>
+    <width>29</width>
+    <height>22</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=1.0 &amp;&amp; pv0&lt;2.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>=`PMAC_BRICK_TEST:MOTOR4:ELOSS`&amp;1</pv_name>
+      </rule>
+    </rules>
+    <widget type="action_button" version="3.0.0">
+      <name>EDM activeMessageButtonClass</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>PMAC_BRICK_TEST:MOTOR4:ELOSSRC.A</pv_name>
+          <value>0</value>
+          <description>Eloss</description>
+        </action>
+      </actions>
+      <text>Eloss</text>
+      <width>28</width>
+      <height>21</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="8.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="red-21" red="224" green="0" blue="0">
+        </color>
+      </background_color>
+      <tooltip>$(actions)</tooltip>
+    </widget>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>EDM activeRectangleClass</name>
+    <x>215</x>
+    <y>165</y>
+    <width>190</width>
+    <height>105</height>
+    <line_width>1</line_width>
+    <line_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color name="Wid-alt/Anno-sec" red="174" green="174" blue="174">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM activeMessageButtonClass</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>PMAC_BRICK_TEST:MOTOR5.STOP</pv_name>
+        <value>1</value>
+        <description>STOP</description>
+      </action>
+    </actions>
+    <text>STOP</text>
+    <x>348</x>
+    <y>243</y>
+    <width>52</width>
+    <height>22</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="red-21" red="224" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="grey-4" red="187" green="187" blue="187">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>EDM activeSymbolClass</name>
+    <file>symbols-traffic-light-symbol.bob</file>
+    <x>223</x>
+    <y>216</y>
+    <width>20</width>
+    <height>20</height>
+    <resize>3</resize>
+    <group_name>EDM Group 0</group_name>
+    <transparent>true</transparent>
+    <scripts>
+      <script file="EmbeddedPy">
+        <text><![CDATA[# pvs[0] = PMAC_BRICK_TEST:MOTOR5.SEVR
+from org.csstudio.display.builder.runtime.script import PVUtil
+val = PVUtil.getDouble(pvs[0])
+if 3.0 <= val < 4.0:
+    widget.setPropertyValue('group_name', 'EDM Group 0')
+elif 0.0 <= val < 0.0:
+    widget.setPropertyValue('group_name', 'EDM Group 1')
+elif 1.0 <= val < 2.0:
+    widget.setPropertyValue('group_name', 'EDM Group 2')
+elif 2.0 <= val < 3.0:
+    widget.setPropertyValue('group_name', 'EDM Group 3')
+elif 0.0 <= val < 1.0:
+    widget.setPropertyValue('group_name', 'EDM Group 4')
+else:
+    widget.setPropertyValue('group_name', 'EDM Group 0')
+]]></text>
+        <pv_name>PMAC_BRICK_TEST:MOTOR5.SEVR</pv_name>
+      </script>
+    </scripts>
+    <tooltip>PMAC_BRICK_TEST:MOTOR5.SEVR</tooltip>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>EDM activeSymbolClass</name>
+    <file>symbols-traffic-light-symbol.bob</file>
+    <x>377</x>
+    <y>216</y>
+    <width>20</width>
+    <height>20</height>
+    <resize>3</resize>
+    <group_name>EDM Group 0</group_name>
+    <transparent>true</transparent>
+    <scripts>
+      <script file="EmbeddedPy">
+        <text><![CDATA[# pvs[0] = PMAC_BRICK_TEST:MOTOR5.DMOV
+from org.csstudio.display.builder.runtime.script import PVUtil
+val = PVUtil.getDouble(pvs[0])
+if 0.0 <= val < 0.0:
+    widget.setPropertyValue('group_name', 'EDM Group 0')
+elif 0.0 <= val < 0.0:
+    widget.setPropertyValue('group_name', 'EDM Group 1')
+elif 0.0 <= val < 0.0:
+    widget.setPropertyValue('group_name', 'EDM Group 2')
+elif 0.0 <= val < 0.0:
+    widget.setPropertyValue('group_name', 'EDM Group 3')
+elif 1.0 <= val < 2.0:
+    widget.setPropertyValue('group_name', 'EDM Group 4')
+elif 0.0 <= val < 1.0:
+    widget.setPropertyValue('group_name', 'EDM Group 5')
+else:
+    widget.setPropertyValue('group_name', 'EDM Group 0')
+]]></text>
+        <pv_name>PMAC_BRICK_TEST:MOTOR5.DMOV</pv_name>
+      </script>
+    </scripts>
+    <tooltip>PMAC_BRICK_TEST:MOTOR5.DMOV</tooltip>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM relatedDisplayClass</name>
+    <actions>
+      <action type="open_display">
+        <file>motor.bob</file>
+        <macros>
+          <motor>PMAC_BRICK_TEST:MOTOR5</motor>
+        </macros>
+        <target>tab</target>
+      </action>
+    </actions>
+    <text>More</text>
+    <x>220</x>
+    <y>243</y>
+    <width>52</width>
+    <height>22</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="brown-43" red="160" green="110" blue="60">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>EDM activeXTextClass</name>
+    <text>Motor 5</text>
+    <x>215</x>
+    <y>160</y>
+    <width>38</width>
+    <height>14</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="11.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="grey-8" red="133" green="133" blue="133">
+      </color>
+    </background_color>
+    <transparent>false</transparent>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>EDM activeXTextDspClass</name>
+    <pv_name>PMAC_BRICK_TEST:MOTOR5.TWV</pv_name>
+    <x>280</x>
+    <y>245</y>
+    <width>60</width>
+    <height>16</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <show_units>false</show_units>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM activeMessageButtonClass</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>PMAC_BRICK_TEST:MOTOR5.TWR</pv_name>
+        <value>1</value>
+        <description>-</description>
+      </action>
+    </actions>
+    <text>-</text>
+    <x>220</x>
+    <y>181</y>
+    <width>43</width>
+    <height>29</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="24.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Controller" red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="grey-4" red="187" green="187" blue="187">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>EDM TextentryClass</name>
+    <pv_name>PMAC_BRICK_TEST:MOTOR5</pv_name>
+    <x>268</x>
+    <y>179</y>
+    <width>83</width>
+    <height>33</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Controller" red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>4</precision>
+    <show_units>false</show_units>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM activeMessageButtonClass</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>PMAC_BRICK_TEST:MOTOR5.TWF</pv_name>
+        <value>1</value>
+        <description>+</description>
+      </action>
+    </actions>
+    <text>+</text>
+    <x>356</x>
+    <y>181</y>
+    <width>43</width>
+    <height>29</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Controller" red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="grey-4" red="187" green="187" blue="187">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="combo" version="2.0.0">
+    <name>EDM activeMenuButtonClass</name>
+    <pv_name>PMAC_BRICK_TEST:MOTOR5.SPMG</pv_name>
+    <x>356</x>
+    <y>166</y>
+    <width>43</width>
+    <height>13</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="8.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Controller" red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>EDM TextupdateClass</name>
+    <pv_name>PMAC_BRICK_TEST:MOTOR5.RBV</pv_name>
+    <x>253</x>
+    <y>217</y>
+    <width>115</width>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Monitor: NORMAL" red="0" green="255" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+      </color>
+    </background_color>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 17</name>
+    <x>336</x>
+    <y>166</y>
+    <width>19</width>
+    <height>12</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=0.0 &amp;&amp; pv0&lt;1.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>PMAC_BRICK_TEST:MOTOR5:KILL</pv_name>
+      </rule>
+    </rules>
+    <widget type="action_button" version="3.0.0">
+      <name>EDM activeMessageButtonClass</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>PMAC_BRICK_TEST:MOTOR5:KILL.PROC</pv_name>
+          <value>1</value>
+          <description>Kill</description>
+        </action>
+      </actions>
+      <text>Kill</text>
+      <width>18</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="8.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="Mon: MAJOR/unack" red="192" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="grey-4" red="187" green="187" blue="187">
+        </color>
+      </background_color>
+      <tooltip>$(actions)</tooltip>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 18</name>
+    <x>373</x>
+    <y>216</y>
+    <width>29</width>
+    <height>22</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=2.0 &amp;&amp; pv0&lt;3.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>=`PMAC_BRICK_TEST:MOTOR5:ELOSS`&amp;2</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>ALoss</text>
+      <width>28</width>
+      <height>21</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="red-21" red="224" green="0" blue="0">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 19</name>
+    <x>373</x>
+    <y>216</y>
+    <width>29</width>
+    <height>22</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=4.0 &amp;&amp; pv0&lt;5.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>=`PMAC_BRICK_TEST:MOTOR5:ELOSS`&amp;4</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>SFail</text>
+      <width>28</width>
+      <height>21</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="red-21" red="224" green="0" blue="0">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 20</name>
+    <x>373</x>
+    <y>216</y>
+    <width>29</width>
+    <height>22</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=1.0 &amp;&amp; pv0&lt;2.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>=`PMAC_BRICK_TEST:MOTOR5:ELOSS`&amp;1</pv_name>
+      </rule>
+    </rules>
+    <widget type="action_button" version="3.0.0">
+      <name>EDM activeMessageButtonClass</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>PMAC_BRICK_TEST:MOTOR5:ELOSSRC.A</pv_name>
+          <value>0</value>
+          <description>Eloss</description>
+        </action>
+      </actions>
+      <text>Eloss</text>
+      <width>28</width>
+      <height>21</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="8.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="red-21" red="224" green="0" blue="0">
+        </color>
+      </background_color>
+      <tooltip>$(actions)</tooltip>
+    </widget>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>EDM activeRectangleClass</name>
+    <x>215</x>
+    <y>285</y>
+    <width>190</width>
+    <height>105</height>
+    <line_width>1</line_width>
+    <line_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color name="Wid-alt/Anno-sec" red="174" green="174" blue="174">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM activeMessageButtonClass</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>PMAC_BRICK_TEST:MOTOR6.STOP</pv_name>
+        <value>1</value>
+        <description>STOP</description>
+      </action>
+    </actions>
+    <text>STOP</text>
+    <x>348</x>
+    <y>363</y>
+    <width>52</width>
+    <height>22</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="red-21" red="224" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="grey-4" red="187" green="187" blue="187">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>EDM activeSymbolClass</name>
+    <file>symbols-traffic-light-symbol.bob</file>
+    <x>223</x>
+    <y>336</y>
+    <width>20</width>
+    <height>20</height>
+    <resize>3</resize>
+    <group_name>EDM Group 0</group_name>
+    <transparent>true</transparent>
+    <scripts>
+      <script file="EmbeddedPy">
+        <text><![CDATA[# pvs[0] = PMAC_BRICK_TEST:MOTOR6.SEVR
+from org.csstudio.display.builder.runtime.script import PVUtil
+val = PVUtil.getDouble(pvs[0])
+if 3.0 <= val < 4.0:
+    widget.setPropertyValue('group_name', 'EDM Group 0')
+elif 0.0 <= val < 0.0:
+    widget.setPropertyValue('group_name', 'EDM Group 1')
+elif 1.0 <= val < 2.0:
+    widget.setPropertyValue('group_name', 'EDM Group 2')
+elif 2.0 <= val < 3.0:
+    widget.setPropertyValue('group_name', 'EDM Group 3')
+elif 0.0 <= val < 1.0:
+    widget.setPropertyValue('group_name', 'EDM Group 4')
+else:
+    widget.setPropertyValue('group_name', 'EDM Group 0')
+]]></text>
+        <pv_name>PMAC_BRICK_TEST:MOTOR6.SEVR</pv_name>
+      </script>
+    </scripts>
+    <tooltip>PMAC_BRICK_TEST:MOTOR6.SEVR</tooltip>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>EDM activeSymbolClass</name>
+    <file>symbols-traffic-light-symbol.bob</file>
+    <x>377</x>
+    <y>336</y>
+    <width>20</width>
+    <height>20</height>
+    <resize>3</resize>
+    <group_name>EDM Group 0</group_name>
+    <transparent>true</transparent>
+    <scripts>
+      <script file="EmbeddedPy">
+        <text><![CDATA[# pvs[0] = PMAC_BRICK_TEST:MOTOR6.DMOV
+from org.csstudio.display.builder.runtime.script import PVUtil
+val = PVUtil.getDouble(pvs[0])
+if 0.0 <= val < 0.0:
+    widget.setPropertyValue('group_name', 'EDM Group 0')
+elif 0.0 <= val < 0.0:
+    widget.setPropertyValue('group_name', 'EDM Group 1')
+elif 0.0 <= val < 0.0:
+    widget.setPropertyValue('group_name', 'EDM Group 2')
+elif 0.0 <= val < 0.0:
+    widget.setPropertyValue('group_name', 'EDM Group 3')
+elif 1.0 <= val < 2.0:
+    widget.setPropertyValue('group_name', 'EDM Group 4')
+elif 0.0 <= val < 1.0:
+    widget.setPropertyValue('group_name', 'EDM Group 5')
+else:
+    widget.setPropertyValue('group_name', 'EDM Group 0')
+]]></text>
+        <pv_name>PMAC_BRICK_TEST:MOTOR6.DMOV</pv_name>
+      </script>
+    </scripts>
+    <tooltip>PMAC_BRICK_TEST:MOTOR6.DMOV</tooltip>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM relatedDisplayClass</name>
+    <actions>
+      <action type="open_display">
+        <file>motor.bob</file>
+        <macros>
+          <motor>PMAC_BRICK_TEST:MOTOR6</motor>
+        </macros>
+        <target>tab</target>
+      </action>
+    </actions>
+    <text>More</text>
+    <x>220</x>
+    <y>363</y>
+    <width>52</width>
+    <height>22</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="brown-43" red="160" green="110" blue="60">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>EDM activeXTextClass</name>
+    <text>Motor 6</text>
+    <x>215</x>
+    <y>280</y>
+    <width>38</width>
+    <height>14</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="11.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="grey-8" red="133" green="133" blue="133">
+      </color>
+    </background_color>
+    <transparent>false</transparent>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>EDM activeXTextDspClass</name>
+    <pv_name>PMAC_BRICK_TEST:MOTOR6.TWV</pv_name>
+    <x>280</x>
+    <y>365</y>
+    <width>60</width>
+    <height>16</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <show_units>false</show_units>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM activeMessageButtonClass</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>PMAC_BRICK_TEST:MOTOR6.TWR</pv_name>
+        <value>1</value>
+        <description>-</description>
+      </action>
+    </actions>
+    <text>-</text>
+    <x>220</x>
+    <y>301</y>
+    <width>43</width>
+    <height>29</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="24.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Controller" red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="grey-4" red="187" green="187" blue="187">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>EDM TextentryClass</name>
+    <pv_name>PMAC_BRICK_TEST:MOTOR6</pv_name>
+    <x>268</x>
+    <y>299</y>
+    <width>83</width>
+    <height>33</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Controller" red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>4</precision>
+    <show_units>false</show_units>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM activeMessageButtonClass</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>PMAC_BRICK_TEST:MOTOR6.TWF</pv_name>
+        <value>1</value>
+        <description>+</description>
+      </action>
+    </actions>
+    <text>+</text>
+    <x>356</x>
+    <y>301</y>
+    <width>43</width>
+    <height>29</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Controller" red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="grey-4" red="187" green="187" blue="187">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="combo" version="2.0.0">
+    <name>EDM activeMenuButtonClass</name>
+    <pv_name>PMAC_BRICK_TEST:MOTOR6.SPMG</pv_name>
+    <x>356</x>
+    <y>286</y>
+    <width>43</width>
+    <height>13</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="8.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Controller" red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>EDM TextupdateClass</name>
+    <pv_name>PMAC_BRICK_TEST:MOTOR6.RBV</pv_name>
+    <x>253</x>
+    <y>337</y>
+    <width>115</width>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Monitor: NORMAL" red="0" green="255" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+      </color>
+    </background_color>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 21</name>
+    <x>336</x>
+    <y>286</y>
+    <width>19</width>
+    <height>12</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=0.0 &amp;&amp; pv0&lt;1.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>PMAC_BRICK_TEST:MOTOR6:KILL</pv_name>
+      </rule>
+    </rules>
+    <widget type="action_button" version="3.0.0">
+      <name>EDM activeMessageButtonClass</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>PMAC_BRICK_TEST:MOTOR6:KILL.PROC</pv_name>
+          <value>1</value>
+          <description>Kill</description>
+        </action>
+      </actions>
+      <text>Kill</text>
+      <width>18</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="8.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="Mon: MAJOR/unack" red="192" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="grey-4" red="187" green="187" blue="187">
+        </color>
+      </background_color>
+      <tooltip>$(actions)</tooltip>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 22</name>
+    <x>373</x>
+    <y>336</y>
+    <width>29</width>
+    <height>22</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=2.0 &amp;&amp; pv0&lt;3.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>=`PMAC_BRICK_TEST:MOTOR6:ELOSS`&amp;2</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>ALoss</text>
+      <width>28</width>
+      <height>21</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="red-21" red="224" green="0" blue="0">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 23</name>
+    <x>373</x>
+    <y>336</y>
+    <width>29</width>
+    <height>22</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=4.0 &amp;&amp; pv0&lt;5.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>=`PMAC_BRICK_TEST:MOTOR6:ELOSS`&amp;4</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>SFail</text>
+      <width>28</width>
+      <height>21</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="red-21" red="224" green="0" blue="0">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 24</name>
+    <x>373</x>
+    <y>336</y>
+    <width>29</width>
+    <height>22</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=1.0 &amp;&amp; pv0&lt;2.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>=`PMAC_BRICK_TEST:MOTOR6:ELOSS`&amp;1</pv_name>
+      </rule>
+    </rules>
+    <widget type="action_button" version="3.0.0">
+      <name>EDM activeMessageButtonClass</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>PMAC_BRICK_TEST:MOTOR6:ELOSSRC.A</pv_name>
+          <value>0</value>
+          <description>Eloss</description>
+        </action>
+      </actions>
+      <text>Eloss</text>
+      <width>28</width>
+      <height>21</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="8.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="red-21" red="224" green="0" blue="0">
+        </color>
+      </background_color>
+      <tooltip>$(actions)</tooltip>
+    </widget>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>EDM activeRectangleClass</name>
+    <x>420</x>
+    <y>45</y>
+    <width>190</width>
+    <height>105</height>
+    <line_width>1</line_width>
+    <line_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color name="Wid-alt/Anno-sec" red="174" green="174" blue="174">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM activeMessageButtonClass</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>PMAC_BRICK_TEST:MOTOR7.STOP</pv_name>
+        <value>1</value>
+        <description>STOP</description>
+      </action>
+    </actions>
+    <text>STOP</text>
+    <x>553</x>
+    <y>123</y>
+    <width>52</width>
+    <height>22</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="red-21" red="224" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="grey-4" red="187" green="187" blue="187">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>EDM activeSymbolClass</name>
+    <file>symbols-traffic-light-symbol.bob</file>
+    <x>428</x>
+    <y>96</y>
+    <width>20</width>
+    <height>20</height>
+    <resize>3</resize>
+    <group_name>EDM Group 0</group_name>
+    <transparent>true</transparent>
+    <scripts>
+      <script file="EmbeddedPy">
+        <text><![CDATA[# pvs[0] = PMAC_BRICK_TEST:MOTOR7.SEVR
+from org.csstudio.display.builder.runtime.script import PVUtil
+val = PVUtil.getDouble(pvs[0])
+if 3.0 <= val < 4.0:
+    widget.setPropertyValue('group_name', 'EDM Group 0')
+elif 0.0 <= val < 0.0:
+    widget.setPropertyValue('group_name', 'EDM Group 1')
+elif 1.0 <= val < 2.0:
+    widget.setPropertyValue('group_name', 'EDM Group 2')
+elif 2.0 <= val < 3.0:
+    widget.setPropertyValue('group_name', 'EDM Group 3')
+elif 0.0 <= val < 1.0:
+    widget.setPropertyValue('group_name', 'EDM Group 4')
+else:
+    widget.setPropertyValue('group_name', 'EDM Group 0')
+]]></text>
+        <pv_name>PMAC_BRICK_TEST:MOTOR7.SEVR</pv_name>
+      </script>
+    </scripts>
+    <tooltip>PMAC_BRICK_TEST:MOTOR7.SEVR</tooltip>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>EDM activeSymbolClass</name>
+    <file>symbols-traffic-light-symbol.bob</file>
+    <x>582</x>
+    <y>96</y>
+    <width>20</width>
+    <height>20</height>
+    <resize>3</resize>
+    <group_name>EDM Group 0</group_name>
+    <transparent>true</transparent>
+    <scripts>
+      <script file="EmbeddedPy">
+        <text><![CDATA[# pvs[0] = PMAC_BRICK_TEST:MOTOR7.DMOV
+from org.csstudio.display.builder.runtime.script import PVUtil
+val = PVUtil.getDouble(pvs[0])
+if 0.0 <= val < 0.0:
+    widget.setPropertyValue('group_name', 'EDM Group 0')
+elif 0.0 <= val < 0.0:
+    widget.setPropertyValue('group_name', 'EDM Group 1')
+elif 0.0 <= val < 0.0:
+    widget.setPropertyValue('group_name', 'EDM Group 2')
+elif 0.0 <= val < 0.0:
+    widget.setPropertyValue('group_name', 'EDM Group 3')
+elif 1.0 <= val < 2.0:
+    widget.setPropertyValue('group_name', 'EDM Group 4')
+elif 0.0 <= val < 1.0:
+    widget.setPropertyValue('group_name', 'EDM Group 5')
+else:
+    widget.setPropertyValue('group_name', 'EDM Group 0')
+]]></text>
+        <pv_name>PMAC_BRICK_TEST:MOTOR7.DMOV</pv_name>
+      </script>
+    </scripts>
+    <tooltip>PMAC_BRICK_TEST:MOTOR7.DMOV</tooltip>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM relatedDisplayClass</name>
+    <actions>
+      <action type="open_display">
+        <file>motor.bob</file>
+        <macros>
+          <motor>PMAC_BRICK_TEST:MOTOR7</motor>
+        </macros>
+        <target>tab</target>
+      </action>
+    </actions>
+    <text>More</text>
+    <x>425</x>
+    <y>123</y>
+    <width>52</width>
+    <height>22</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="brown-43" red="160" green="110" blue="60">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>EDM activeXTextClass</name>
+    <text>Motor 7</text>
+    <x>420</x>
+    <y>40</y>
+    <width>38</width>
+    <height>14</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="11.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="grey-8" red="133" green="133" blue="133">
+      </color>
+    </background_color>
+    <transparent>false</transparent>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>EDM activeXTextDspClass</name>
+    <pv_name>PMAC_BRICK_TEST:MOTOR7.TWV</pv_name>
+    <x>485</x>
+    <y>125</y>
+    <width>60</width>
+    <height>16</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <show_units>false</show_units>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM activeMessageButtonClass</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>PMAC_BRICK_TEST:MOTOR7.TWR</pv_name>
+        <value>1</value>
+        <description>-</description>
+      </action>
+    </actions>
+    <text>-</text>
+    <x>425</x>
+    <y>61</y>
+    <width>43</width>
+    <height>29</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="24.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Controller" red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="grey-4" red="187" green="187" blue="187">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>EDM TextentryClass</name>
+    <pv_name>PMAC_BRICK_TEST:MOTOR7</pv_name>
+    <x>473</x>
+    <y>59</y>
+    <width>83</width>
+    <height>33</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Controller" red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>4</precision>
+    <show_units>false</show_units>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM activeMessageButtonClass</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>PMAC_BRICK_TEST:MOTOR7.TWF</pv_name>
+        <value>1</value>
+        <description>+</description>
+      </action>
+    </actions>
+    <text>+</text>
+    <x>561</x>
+    <y>61</y>
+    <width>43</width>
+    <height>29</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Controller" red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="grey-4" red="187" green="187" blue="187">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="combo" version="2.0.0">
+    <name>EDM activeMenuButtonClass</name>
+    <pv_name>PMAC_BRICK_TEST:MOTOR7.SPMG</pv_name>
+    <x>561</x>
+    <y>46</y>
+    <width>43</width>
+    <height>13</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="8.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Controller" red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>EDM TextupdateClass</name>
+    <pv_name>PMAC_BRICK_TEST:MOTOR7.RBV</pv_name>
+    <x>458</x>
+    <y>97</y>
+    <width>115</width>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Monitor: NORMAL" red="0" green="255" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+      </color>
+    </background_color>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 25</name>
+    <x>541</x>
+    <y>46</y>
+    <width>19</width>
+    <height>12</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=0.0 &amp;&amp; pv0&lt;1.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>PMAC_BRICK_TEST:MOTOR7:KILL</pv_name>
+      </rule>
+    </rules>
+    <widget type="action_button" version="3.0.0">
+      <name>EDM activeMessageButtonClass</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>PMAC_BRICK_TEST:MOTOR7:KILL.PROC</pv_name>
+          <value>1</value>
+          <description>Kill</description>
+        </action>
+      </actions>
+      <text>Kill</text>
+      <width>18</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="8.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="Mon: MAJOR/unack" red="192" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="grey-4" red="187" green="187" blue="187">
+        </color>
+      </background_color>
+      <tooltip>$(actions)</tooltip>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 26</name>
+    <x>578</x>
+    <y>96</y>
+    <width>29</width>
+    <height>22</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=2.0 &amp;&amp; pv0&lt;3.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>=`PMAC_BRICK_TEST:MOTOR7:ELOSS`&amp;2</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>ALoss</text>
+      <width>28</width>
+      <height>21</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="red-21" red="224" green="0" blue="0">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 27</name>
+    <x>578</x>
+    <y>96</y>
+    <width>29</width>
+    <height>22</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=4.0 &amp;&amp; pv0&lt;5.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>=`PMAC_BRICK_TEST:MOTOR7:ELOSS`&amp;4</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>SFail</text>
+      <width>28</width>
+      <height>21</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="red-21" red="224" green="0" blue="0">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 28</name>
+    <x>578</x>
+    <y>96</y>
+    <width>29</width>
+    <height>22</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=1.0 &amp;&amp; pv0&lt;2.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>=`PMAC_BRICK_TEST:MOTOR7:ELOSS`&amp;1</pv_name>
+      </rule>
+    </rules>
+    <widget type="action_button" version="3.0.0">
+      <name>EDM activeMessageButtonClass</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>PMAC_BRICK_TEST:MOTOR7:ELOSSRC.A</pv_name>
+          <value>0</value>
+          <description>Eloss</description>
+        </action>
+      </actions>
+      <text>Eloss</text>
+      <width>28</width>
+      <height>21</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="8.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="red-21" red="224" green="0" blue="0">
+        </color>
+      </background_color>
+      <tooltip>$(actions)</tooltip>
+    </widget>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>EDM activeRectangleClass</name>
+    <x>420</x>
+    <y>165</y>
+    <width>190</width>
+    <height>105</height>
+    <line_width>1</line_width>
+    <line_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color name="Wid-alt/Anno-sec" red="174" green="174" blue="174">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM activeMessageButtonClass</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>PMAC_BRICK_TEST:MOTOR8.STOP</pv_name>
+        <value>1</value>
+        <description>STOP</description>
+      </action>
+    </actions>
+    <text>STOP</text>
+    <x>553</x>
+    <y>243</y>
+    <width>52</width>
+    <height>22</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="red-21" red="224" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="grey-4" red="187" green="187" blue="187">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>EDM activeSymbolClass</name>
+    <file>symbols-traffic-light-symbol.bob</file>
+    <x>428</x>
+    <y>216</y>
+    <width>20</width>
+    <height>20</height>
+    <resize>3</resize>
+    <group_name>EDM Group 0</group_name>
+    <transparent>true</transparent>
+    <scripts>
+      <script file="EmbeddedPy">
+        <text><![CDATA[# pvs[0] = PMAC_BRICK_TEST:MOTOR8.SEVR
+from org.csstudio.display.builder.runtime.script import PVUtil
+val = PVUtil.getDouble(pvs[0])
+if 3.0 <= val < 4.0:
+    widget.setPropertyValue('group_name', 'EDM Group 0')
+elif 0.0 <= val < 0.0:
+    widget.setPropertyValue('group_name', 'EDM Group 1')
+elif 1.0 <= val < 2.0:
+    widget.setPropertyValue('group_name', 'EDM Group 2')
+elif 2.0 <= val < 3.0:
+    widget.setPropertyValue('group_name', 'EDM Group 3')
+elif 0.0 <= val < 1.0:
+    widget.setPropertyValue('group_name', 'EDM Group 4')
+else:
+    widget.setPropertyValue('group_name', 'EDM Group 0')
+]]></text>
+        <pv_name>PMAC_BRICK_TEST:MOTOR8.SEVR</pv_name>
+      </script>
+    </scripts>
+    <tooltip>PMAC_BRICK_TEST:MOTOR8.SEVR</tooltip>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>EDM activeSymbolClass</name>
+    <file>symbols-traffic-light-symbol.bob</file>
+    <x>582</x>
+    <y>216</y>
+    <width>20</width>
+    <height>20</height>
+    <resize>3</resize>
+    <group_name>EDM Group 0</group_name>
+    <transparent>true</transparent>
+    <scripts>
+      <script file="EmbeddedPy">
+        <text><![CDATA[# pvs[0] = PMAC_BRICK_TEST:MOTOR8.DMOV
+from org.csstudio.display.builder.runtime.script import PVUtil
+val = PVUtil.getDouble(pvs[0])
+if 0.0 <= val < 0.0:
+    widget.setPropertyValue('group_name', 'EDM Group 0')
+elif 0.0 <= val < 0.0:
+    widget.setPropertyValue('group_name', 'EDM Group 1')
+elif 0.0 <= val < 0.0:
+    widget.setPropertyValue('group_name', 'EDM Group 2')
+elif 0.0 <= val < 0.0:
+    widget.setPropertyValue('group_name', 'EDM Group 3')
+elif 1.0 <= val < 2.0:
+    widget.setPropertyValue('group_name', 'EDM Group 4')
+elif 0.0 <= val < 1.0:
+    widget.setPropertyValue('group_name', 'EDM Group 5')
+else:
+    widget.setPropertyValue('group_name', 'EDM Group 0')
+]]></text>
+        <pv_name>PMAC_BRICK_TEST:MOTOR8.DMOV</pv_name>
+      </script>
+    </scripts>
+    <tooltip>PMAC_BRICK_TEST:MOTOR8.DMOV</tooltip>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM relatedDisplayClass</name>
+    <actions>
+      <action type="open_display">
+        <file>motor.bob</file>
+        <macros>
+          <motor>PMAC_BRICK_TEST:MOTOR8</motor>
+        </macros>
+        <target>tab</target>
+      </action>
+    </actions>
+    <text>More</text>
+    <x>425</x>
+    <y>243</y>
+    <width>52</width>
+    <height>22</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="brown-43" red="160" green="110" blue="60">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>EDM activeXTextClass</name>
+    <text>Motor 8</text>
+    <x>420</x>
+    <y>160</y>
+    <width>38</width>
+    <height>14</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="11.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="grey-8" red="133" green="133" blue="133">
+      </color>
+    </background_color>
+    <transparent>false</transparent>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>EDM activeXTextDspClass</name>
+    <pv_name>PMAC_BRICK_TEST:MOTOR8.TWV</pv_name>
+    <x>485</x>
+    <y>245</y>
+    <width>60</width>
+    <height>16</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <show_units>false</show_units>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM activeMessageButtonClass</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>PMAC_BRICK_TEST:MOTOR8.TWR</pv_name>
+        <value>1</value>
+        <description>-</description>
+      </action>
+    </actions>
+    <text>-</text>
+    <x>425</x>
+    <y>181</y>
+    <width>43</width>
+    <height>29</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="24.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Controller" red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="grey-4" red="187" green="187" blue="187">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>EDM TextentryClass</name>
+    <pv_name>PMAC_BRICK_TEST:MOTOR8</pv_name>
+    <x>473</x>
+    <y>179</y>
+    <width>83</width>
+    <height>33</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Controller" red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>4</precision>
+    <show_units>false</show_units>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM activeMessageButtonClass</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>PMAC_BRICK_TEST:MOTOR8.TWF</pv_name>
+        <value>1</value>
+        <description>+</description>
+      </action>
+    </actions>
+    <text>+</text>
+    <x>561</x>
+    <y>181</y>
+    <width>43</width>
+    <height>29</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Controller" red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="grey-4" red="187" green="187" blue="187">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="combo" version="2.0.0">
+    <name>EDM activeMenuButtonClass</name>
+    <pv_name>PMAC_BRICK_TEST:MOTOR8.SPMG</pv_name>
+    <x>561</x>
+    <y>166</y>
+    <width>43</width>
+    <height>13</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="8.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Controller" red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>EDM TextupdateClass</name>
+    <pv_name>PMAC_BRICK_TEST:MOTOR8.RBV</pv_name>
+    <x>458</x>
+    <y>217</y>
+    <width>115</width>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Monitor: NORMAL" red="0" green="255" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+      </color>
+    </background_color>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 29</name>
+    <x>541</x>
+    <y>166</y>
+    <width>19</width>
+    <height>12</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=0.0 &amp;&amp; pv0&lt;1.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>PMAC_BRICK_TEST:MOTOR8:KILL</pv_name>
+      </rule>
+    </rules>
+    <widget type="action_button" version="3.0.0">
+      <name>EDM activeMessageButtonClass</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>PMAC_BRICK_TEST:MOTOR8:KILL.PROC</pv_name>
+          <value>1</value>
+          <description>Kill</description>
+        </action>
+      </actions>
+      <text>Kill</text>
+      <width>18</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="8.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="Mon: MAJOR/unack" red="192" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="grey-4" red="187" green="187" blue="187">
+        </color>
+      </background_color>
+      <tooltip>$(actions)</tooltip>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 30</name>
+    <x>578</x>
+    <y>216</y>
+    <width>29</width>
+    <height>22</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=2.0 &amp;&amp; pv0&lt;3.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>=`PMAC_BRICK_TEST:MOTOR8:ELOSS`&amp;2</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>ALoss</text>
+      <width>28</width>
+      <height>21</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="red-21" red="224" green="0" blue="0">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 31</name>
+    <x>578</x>
+    <y>216</y>
+    <width>29</width>
+    <height>22</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=4.0 &amp;&amp; pv0&lt;5.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>=`PMAC_BRICK_TEST:MOTOR8:ELOSS`&amp;4</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>SFail</text>
+      <width>28</width>
+      <height>21</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="red-21" red="224" green="0" blue="0">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 32</name>
+    <x>578</x>
+    <y>216</y>
+    <width>29</width>
+    <height>22</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=1.0 &amp;&amp; pv0&lt;2.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>=`PMAC_BRICK_TEST:MOTOR8:ELOSS`&amp;1</pv_name>
+      </rule>
+    </rules>
+    <widget type="action_button" version="3.0.0">
+      <name>EDM activeMessageButtonClass</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>PMAC_BRICK_TEST:MOTOR8:ELOSSRC.A</pv_name>
+          <value>0</value>
+          <description>Eloss</description>
+        </action>
+      </actions>
+      <text>Eloss</text>
+      <width>28</width>
+      <height>21</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="8.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="red-21" red="224" green="0" blue="0">
+        </color>
+      </background_color>
+      <tooltip>$(actions)</tooltip>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 33</name>
+    <x>420</x>
+    <y>280</y>
+    <width>91</width>
+    <height>21</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>Brick</text>
+      <x>2</x>
+      <y>2</y>
+      <width>86</width>
+      <height>16</height>
+      <font>
+        <font family="Liberation Sans" style="BOLD" size="14.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="brown-43" red="160" green="110" blue="60">
+        </color>
+      </foreground_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+      <rules>
+        <rule name="EDM visibility" prop_id="visible" out_exp="false">
+          <exp bool_exp="pv0&gt;=1.0 &amp;&amp; pv0&lt;2.0">
+            <value>false</value>
+          </exp>
+          <exp bool_exp="true">
+            <value>true</value>
+          </exp>
+          <pv_name>loc://dummy0(0)</pv_name>
+        </rule>
+      </rules>
+      <scripts>
+        <script file="EmbeddedPy">
+          <text><![CDATA[# EDM Alarm-sensitive color
+from org.csstudio.display.builder.runtime.script import PVUtil
+from org.csstudio.display.builder.model.persist import WidgetColorService
+sevr = PVUtil.getSeverity(pvs[0])
+cn = ( 'OK', 'MINOR', 'MAJOR', 'INVALID', 'DISCONNECTED' )[sevr]
+widget.setPropertyValue('background_color', WidgetColorService.getColor(cn))]]></text>
+          <pv_name>loc://dummy0(0)</pv_name>
+        </script>
+      </scripts>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>Brick</text>
+      <x>2</x>
+      <y>2</y>
+      <width>86</width>
+      <height>16</height>
+      <font>
+        <font family="Liberation Sans" style="BOLD" size="14.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="brown-43" red="160" green="110" blue="60">
+        </color>
+      </foreground_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+      <rules>
+        <rule name="EDM visibility" prop_id="visible" out_exp="false">
+          <exp bool_exp="pv0&gt;=1.0 &amp;&amp; pv0&lt;2.0">
+            <value>true</value>
+          </exp>
+          <exp bool_exp="true">
+            <value>false</value>
+          </exp>
+          <pv_name>loc://dummy0(0)</pv_name>
+        </rule>
+      </rules>
+      <scripts>
+        <script file="EmbeddedPy">
+          <text><![CDATA[# EDM Alarm-sensitive color
+from org.csstudio.display.builder.runtime.script import PVUtil
+from org.csstudio.display.builder.model.persist import WidgetColorService
+sevr = PVUtil.getSeverity(pvs[0])
+cn = ( 'OK', 'MINOR', 'MAJOR', 'INVALID', 'DISCONNECTED' )[sevr]
+widget.setPropertyValue('background_color', WidgetColorService.getColor(cn))]]></text>
+          <pv_name>loc://dummy0(0)</pv_name>
+        </script>
+      </scripts>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>EDM relatedDisplayClass</name>
+      <actions>
+        <action type="open_display">
+          <file>pmacController.bob</file>
+          <macros>
+            <pmac>BRICK1</pmac>
+          </macros>
+          <target>tab</target>
+        </action>
+      </actions>
+      <text></text>
+      <width>90</width>
+      <height>20</height>
+      <font>
+        <font family="Liberation Sans" style="BOLD" size="14.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="brown-43" red="160" green="110" blue="60">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="Transparent" red="255" green="255" blue="255" alpha="0">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+      <tooltip>$(actions)</tooltip>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 34</name>
+    <width>51</width>
+    <height>31</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="ellipse" version="2.0.0">
+      <name>EDM activeCircleClass</name>
+      <width>48</width>
+      <height>29</height>
+      <line_width>2</line_width>
+      <line_color>
+        <color name="grey-1" red="236" green="236" blue="236">
+        </color>
+      </line_color>
+      <background_color>
+        <color name="Disconn/Invalid" red="255" green="255" blue="255">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+    </widget>
+    <widget type="ellipse" version="2.0.0">
+      <name>EDM activeCircleClass</name>
+      <x>2</x>
+      <y>2</y>
+      <width>48</width>
+      <height>29</height>
+      <line_width>2</line_width>
+      <line_color>
+        <color name="grey-11" red="90" green="90" blue="90">
+        </color>
+      </line_color>
+      <background_color>
+        <color name="Disconn/Invalid" red="255" green="255" blue="255">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+    </widget>
+    <widget type="ellipse" version="2.0.0">
+      <name>EDM activeCircleClass</name>
+      <x>2</x>
+      <y>2</y>
+      <width>47</width>
+      <height>27</height>
+      <line_color>
+        <color name="49" red="0" green="0" blue="0">
+        </color>
+      </line_color>
+      <background_color>
+        <color name="48" red="0" green="0" blue="0">
+        </color>
+      </background_color>
+    </widget>
+    <widget type="ellipse" version="2.0.0">
+      <name>EDM activeCircleClass</name>
+      <x>12</x>
+      <y>6</y>
+      <width>4</width>
+      <height>3</height>
+      <line_width>2</line_width>
+      <line_color>
+        <color name="grey-1" red="236" green="236" blue="236">
+        </color>
+      </line_color>
+      <background_color>
+        <color name="Disconn/Invalid" red="255" green="255" blue="255">
+        </color>
+      </background_color>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>labTop</text>
+      <width>50</width>
+      <height>30</height>
+      <font>
+        <font family="Liberation Sans" style="BOLD" size="14.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM activeExitButtonClass</name>
+    <actions>
+      <action type="execute">
+        <script file="EmbeddedPy">
+          <text><![CDATA[from org.csstudio.display.builder.runtime.script import ScriptUtil
+ScriptUtil.closeDisplay(widget)
+]]></text>
+        </script>
+        <description>close</description>
+      </action>
+    </actions>
+    <text>EXIT</text>
+    <x>520</x>
+    <y>370</y>
+    <width>90</width>
+    <height>20</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="purple-46" red="192" green="0" blue="192">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM relatedDisplayClass</name>
+    <actions>
+      <action type="open_display">
+        <file>motor-embed-small-tooltip.bob</file>
+        <macros>
+          <box-label>Motor 1-&gt;A</box-label>
+          <motor>PMAC_BRICK_TEST:MOTOR1</motor>
+        </macros>
+        <target>tab</target>
+      </action>
+    </actions>
+    <text></text>
+    <y>363</y>
+    <width>189</width>
+    <height>109</height>
+    <foreground_color>
+      <color name="Disconn/Invalid" red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="Transparent" red="255" green="255" blue="255" alpha="0">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM relatedDisplayClass</name>
+    <actions>
+      <action type="open_display">
+        <file>motor-embed-small-tooltip.bob</file>
+        <macros>
+          <box-label>Motor 2-&gt;B</box-label>
+          <motor>PMAC_BRICK_TEST:MOTOR2</motor>
+        </macros>
+        <target>tab</target>
+      </action>
+    </actions>
+    <text></text>
+    <x>10</x>
+    <y>160</y>
+    <width>189</width>
+    <height>109</height>
+    <foreground_color>
+      <color name="Disconn/Invalid" red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="Transparent" red="255" green="255" blue="255" alpha="0">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM relatedDisplayClass</name>
+    <actions>
+      <action type="open_display">
+        <file>motor-embed-small-tooltip.bob</file>
+        <macros>
+          <box-label>Motor 3-&gt;I JACK 1</box-label>
+          <motor>PMAC_BRICK_TEST:MOTOR3</motor>
+        </macros>
+        <target>tab</target>
+      </action>
+    </actions>
+    <text></text>
+    <x>10</x>
+    <y>280</y>
+    <width>189</width>
+    <height>109</height>
+    <foreground_color>
+      <color name="Disconn/Invalid" red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="Transparent" red="255" green="255" blue="255" alpha="0">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM relatedDisplayClass</name>
+    <actions>
+      <action type="open_display">
+        <file>motor-embed-small-tooltip.bob</file>
+        <macros>
+          <box-label>Motor 4-&gt;I- JACK 2</box-label>
+          <motor>PMAC_BRICK_TEST:MOTOR4</motor>
+        </macros>
+        <target>tab</target>
+      </action>
+    </actions>
+    <text></text>
+    <x>215</x>
+    <y>40</y>
+    <width>189</width>
+    <height>109</height>
+    <foreground_color>
+      <color name="Disconn/Invalid" red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="Transparent" red="255" green="255" blue="255" alpha="0">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM relatedDisplayClass</name>
+    <actions>
+      <action type="open_display">
+        <file>motor-embed-small-tooltip.bob</file>
+        <macros>
+          <box-label>Motor 5</box-label>
+          <motor>PMAC_BRICK_TEST:MOTOR5</motor>
+        </macros>
+        <target>tab</target>
+      </action>
+    </actions>
+    <text></text>
+    <x>215</x>
+    <y>160</y>
+    <width>189</width>
+    <height>109</height>
+    <foreground_color>
+      <color name="Disconn/Invalid" red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="Transparent" red="255" green="255" blue="255" alpha="0">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM relatedDisplayClass</name>
+    <actions>
+      <action type="open_display">
+        <file>motor-embed-small-tooltip.bob</file>
+        <macros>
+          <box-label>Motor 6</box-label>
+          <motor>PMAC_BRICK_TEST:MOTOR6</motor>
+        </macros>
+        <target>tab</target>
+      </action>
+    </actions>
+    <text></text>
+    <x>215</x>
+    <y>280</y>
+    <width>189</width>
+    <height>109</height>
+    <foreground_color>
+      <color name="Disconn/Invalid" red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="Transparent" red="255" green="255" blue="255" alpha="0">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM relatedDisplayClass</name>
+    <actions>
+      <action type="open_display">
+        <file>motor-embed-small-tooltip.bob</file>
+        <macros>
+          <box-label>Motor 7</box-label>
+          <motor>PMAC_BRICK_TEST:MOTOR7</motor>
+        </macros>
+        <target>tab</target>
+      </action>
+    </actions>
+    <text></text>
+    <x>420</x>
+    <y>40</y>
+    <width>189</width>
+    <height>109</height>
+    <foreground_color>
+      <color name="Disconn/Invalid" red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="Transparent" red="255" green="255" blue="255" alpha="0">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM relatedDisplayClass</name>
+    <actions>
+      <action type="open_display">
+        <file>motor-embed-small-tooltip.bob</file>
+        <macros>
+          <box-label>Motor 8</box-label>
+          <motor>PMAC_BRICK_TEST:MOTOR8</motor>
+        </macros>
+        <target>tab</target>
+      </action>
+    </actions>
+    <text></text>
+    <x>420</x>
+    <y>160</y>
+    <width>189</width>
+    <height>109</height>
+    <foreground_color>
+      <color name="Disconn/Invalid" red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="Transparent" red="255" green="255" blue="255" alpha="0">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+</display>

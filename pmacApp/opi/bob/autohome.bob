@@ -1,0 +1,3331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>Homing - $(P)</name>
+  <x>189</x>
+  <y>451</y>
+  <width>684</width>
+  <height>331</height>
+  <background_color>
+    <color name="GLOBAL canvas" red="200" green="200" blue="200">
+    </color>
+  </background_color>
+  <grid_step_x>5</grid_step_x>
+  <grid_step_y>5</grid_step_y>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 0</name>
+    <width>686</width>
+    <height>31</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="rectangle" version="2.0.0">
+      <name>EDM activeRectangleClass</name>
+      <width>686</width>
+      <height>31</height>
+      <line_width>1</line_width>
+      <line_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </line_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+    </widget>
+    <widget type="polyline" version="2.0.0">
+      <name>EDM activeLineClass</name>
+      <y>3</y>
+      <width>685</width>
+      <height>24</height>
+      <points>
+        <point x="0.0" y="24.0">
+        </point>
+        <point x="685.0" y="24.0">
+        </point>
+        <point x="685.0" y="0.0">
+        </point>
+      </points>
+      <line_width>1</line_width>
+      <line_color>
+        <color name="grey-11" red="90" green="90" blue="90">
+        </color>
+      </line_color>
+      <arrow_length>15</arrow_length>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>Homing - $(P)</text>
+      <y>3</y>
+      <width>685</width>
+      <height>24</height>
+      <font>
+        <font family="Liberation Sans" style="BOLD" size="16.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="48" red="0" green="0" blue="0">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="polyline" version="2.0.0">
+      <name>EDM activeLineClass</name>
+      <y>3</y>
+      <width>685</width>
+      <height>24</height>
+      <points>
+        <point x="0.0" y="24.0">
+        </point>
+        <point x="0.0" y="0.0">
+        </point>
+        <point x="685.0" y="0.0">
+        </point>
+      </points>
+      <line_width>1</line_width>
+      <line_color>
+        <color name="grey-1" red="236" green="236" blue="236">
+        </color>
+      </line_color>
+      <arrow_length>15</arrow_length>
+    </widget>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM activeExitButtonClass</name>
+    <actions>
+      <action type="execute">
+        <script file="EmbeddedPy">
+          <text><![CDATA[from org.csstudio.display.builder.runtime.script import ScriptUtil
+ScriptUtil.closeDisplay(widget)
+]]></text>
+        </script>
+        <description>close</description>
+      </action>
+    </actions>
+    <text>EXIT</text>
+    <x>595</x>
+    <y>305</y>
+    <width>80</width>
+    <height>20</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="purple-46" red="192" green="0" blue="192">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>EDM activeRectangleClass</name>
+    <x>5</x>
+    <y>45</y>
+    <width>181</width>
+    <height>166</height>
+    <line_width>1</line_width>
+    <line_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color name="Wid-alt/Anno-sec" red="174" green="174" blue="174">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>EDM activeXTextClass</name>
+    <text>Homing Status</text>
+    <x>5</x>
+    <y>35</y>
+    <width>96</width>
+    <height>15</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="12.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="grey-8" red="133" green="133" blue="133">
+      </color>
+    </background_color>
+    <transparent>false</transparent>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>EDM TextupdateClass</name>
+    <pv_name>$(P):HM:STATUS</pv_name>
+    <x>11</x>
+    <y>126</y>
+    <width>168</width>
+    <height>23</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="green-16" red="0" green="224" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+      </color>
+    </background_color>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>EDM TextupdateClass</name>
+    <pv_name>$(P):HM:STATE</pv_name>
+    <x>11</x>
+    <y>71</y>
+    <width>168</width>
+    <height>23</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="green-16" red="0" green="224" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+      </color>
+    </background_color>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>EDM activeXTextClass</name>
+    <text>Move timer</text>
+    <x>10</x>
+    <y>160</y>
+    <width>170</width>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="12.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>EDM activeXTextClass</name>
+    <text>Homing State:</text>
+    <x>10</x>
+    <y>50</y>
+    <width>170</width>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="12.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>EDM activeXTextClass</name>
+    <text>Homing Status:</text>
+    <x>10</x>
+    <y>105</y>
+    <width>170</width>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="12.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>EDM activeRectangleClass</name>
+    <x>5</x>
+    <y>235</y>
+    <width>181</width>
+    <height>91</height>
+    <line_width>1</line_width>
+    <line_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color name="Wid-alt/Anno-sec" red="174" green="174" blue="174">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>EDM activeXTextClass</name>
+    <text>Homing Control</text>
+    <x>5</x>
+    <y>225</y>
+    <height>15</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="12.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="grey-8" red="133" green="133" blue="133">
+      </color>
+    </background_color>
+    <transparent>false</transparent>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM activeMessageButtonClass</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P):HM:HOME</pv_name>
+        <value>1</value>
+        <description>Home</description>
+      </action>
+    </actions>
+    <text>Home</text>
+    <x>10</x>
+    <y>290</y>
+    <width>70</width>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Controller" red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="grey-4" red="187" green="187" blue="187">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM activeMessageButtonClass</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P):HM:ABORT.PROC</pv_name>
+        <value>1</value>
+        <description>Abort</description>
+      </action>
+    </actions>
+    <text>Abort</text>
+    <x>110</x>
+    <y>290</y>
+    <width>70</width>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Monitor: MAJOR" red="255" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="byte_monitor" version="2.0.0">
+    <name>EDM ByteClass</name>
+    <pv_name>$(P):HM:HOMING</pv_name>
+    <x>85</x>
+    <y>295</y>
+    <width>20</width>
+    <numBits>1</numBits>
+    <horizontal>false</horizontal>
+    <square>true</square>
+    <off_color>
+      <color name="green-19" red="0" green="128" blue="0">
+      </color>
+    </off_color>
+    <on_color>
+      <color name="Monitor: NORMAL" red="0" green="255" blue="0">
+      </color>
+    </on_color>
+    <foreground_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>EDM activeRectangleClass</name>
+    <x>200</x>
+    <y>45</y>
+    <width>476</width>
+    <height>256</height>
+    <line_width>1</line_width>
+    <line_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color name="Wid-alt/Anno-sec" red="174" green="174" blue="174">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>EDM activeXTextClass</name>
+    <text>Axis Status</text>
+    <x>200</x>
+    <y>35</y>
+    <width>74</width>
+    <height>15</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="12.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="grey-8" red="133" green="133" blue="133">
+      </color>
+    </background_color>
+    <transparent>false</transparent>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="combo" version="2.0.0">
+    <name>EDM activeMenuButtonClass</name>
+    <pv_name>$(P):HM:HMGRP</pv_name>
+    <x>10</x>
+    <y>260</y>
+    <width>170</width>
+    <height>25</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="12.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Controller" red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>EDM activeXTextClass</name>
+    <text>Group of axes to home:</text>
+    <x>10</x>
+    <y>240</y>
+    <width>170</width>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="12.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 1</name>
+    <x>205</x>
+    <y>55</y>
+    <width>231</width>
+    <height>17</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=0.0 &amp;&amp; pv0&lt;1.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P):HM:M1PV.SEVR</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>1</text>
+      <width>16</width>
+      <height>16</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor1):HMPOS.DESC</pv_name>
+      <x>16</x>
+      <y>1</y>
+      <width>128</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor1):HMPOS</pv_name>
+      <x>146</x>
+      <y>1</y>
+      <width>83</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="green-16" red="0" green="224" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 2</name>
+    <x>440</x>
+    <y>280</y>
+    <width>231</width>
+    <height>17</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=0.0 &amp;&amp; pv0&lt;1.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P):HM:M32PV.SEVR</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>32</text>
+      <width>16</width>
+      <height>16</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor32):HMPOS.DESC</pv_name>
+      <x>16</x>
+      <y>1</y>
+      <width>128</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor32):HMPOS</pv_name>
+      <x>146</x>
+      <y>1</y>
+      <width>83</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="green-16" red="0" green="224" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 3</name>
+    <x>205</x>
+    <y>70</y>
+    <width>231</width>
+    <height>17</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=0.0 &amp;&amp; pv0&lt;1.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P):HM:M2PV.SEVR</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>2</text>
+      <width>16</width>
+      <height>16</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor2):HMPOS.DESC</pv_name>
+      <x>16</x>
+      <y>1</y>
+      <width>128</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor2):HMPOS</pv_name>
+      <x>146</x>
+      <y>1</y>
+      <width>83</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="green-16" red="0" green="224" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 4</name>
+    <x>205</x>
+    <y>85</y>
+    <width>231</width>
+    <height>17</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=0.0 &amp;&amp; pv0&lt;1.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P):HM:M3PV.SEVR</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>3</text>
+      <width>16</width>
+      <height>16</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor3):HMPOS.DESC</pv_name>
+      <x>16</x>
+      <y>1</y>
+      <width>128</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor3):HMPOS</pv_name>
+      <x>146</x>
+      <y>1</y>
+      <width>83</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="green-16" red="0" green="224" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 5</name>
+    <x>205</x>
+    <y>100</y>
+    <width>231</width>
+    <height>17</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=0.0 &amp;&amp; pv0&lt;1.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P):HM:M4PV.SEVR</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>4</text>
+      <width>16</width>
+      <height>16</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor4):HMPOS.DESC</pv_name>
+      <x>16</x>
+      <y>1</y>
+      <width>128</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor4):HMPOS</pv_name>
+      <x>146</x>
+      <y>1</y>
+      <width>83</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="green-16" red="0" green="224" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 6</name>
+    <x>205</x>
+    <y>115</y>
+    <width>231</width>
+    <height>17</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=0.0 &amp;&amp; pv0&lt;1.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P):HM:M5PV.SEVR</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>5</text>
+      <width>16</width>
+      <height>16</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor5):HMPOS.DESC</pv_name>
+      <x>16</x>
+      <y>1</y>
+      <width>128</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor5):HMPOS</pv_name>
+      <x>146</x>
+      <y>1</y>
+      <width>83</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="green-16" red="0" green="224" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 7</name>
+    <x>205</x>
+    <y>130</y>
+    <width>231</width>
+    <height>17</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=0.0 &amp;&amp; pv0&lt;1.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P):HM:M6PV.SEVR</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>6</text>
+      <width>16</width>
+      <height>16</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor6):HMPOS.DESC</pv_name>
+      <x>16</x>
+      <y>1</y>
+      <width>128</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor6):HMPOS</pv_name>
+      <x>146</x>
+      <y>1</y>
+      <width>83</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="green-16" red="0" green="224" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 8</name>
+    <x>205</x>
+    <y>145</y>
+    <width>231</width>
+    <height>17</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=0.0 &amp;&amp; pv0&lt;1.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P):HM:M7PV.SEVR</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>7</text>
+      <width>16</width>
+      <height>16</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor7):HMPOS.DESC</pv_name>
+      <x>16</x>
+      <y>1</y>
+      <width>128</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor7):HMPOS</pv_name>
+      <x>146</x>
+      <y>1</y>
+      <width>83</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="green-16" red="0" green="224" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 9</name>
+    <x>205</x>
+    <y>160</y>
+    <width>231</width>
+    <height>17</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=0.0 &amp;&amp; pv0&lt;1.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P):HM:M8PV.SEVR</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>8</text>
+      <width>16</width>
+      <height>16</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor8):HMPOS.DESC</pv_name>
+      <x>16</x>
+      <y>1</y>
+      <width>128</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor8):HMPOS</pv_name>
+      <x>146</x>
+      <y>1</y>
+      <width>83</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="green-16" red="0" green="224" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 10</name>
+    <x>205</x>
+    <y>175</y>
+    <width>231</width>
+    <height>17</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=0.0 &amp;&amp; pv0&lt;1.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P):HM:M9PV.SEVR</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>9</text>
+      <width>16</width>
+      <height>16</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor9):HMPOS.DESC</pv_name>
+      <x>16</x>
+      <y>1</y>
+      <width>128</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor9):HMPOS</pv_name>
+      <x>146</x>
+      <y>1</y>
+      <width>83</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="green-16" red="0" green="224" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 11</name>
+    <x>205</x>
+    <y>190</y>
+    <width>231</width>
+    <height>17</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=0.0 &amp;&amp; pv0&lt;1.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P):HM:M10PV.SEVR</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>10</text>
+      <width>16</width>
+      <height>16</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor10):HMPOS.DESC</pv_name>
+      <x>16</x>
+      <y>1</y>
+      <width>128</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor10):HMPOS</pv_name>
+      <x>146</x>
+      <y>1</y>
+      <width>83</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="green-16" red="0" green="224" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 12</name>
+    <x>205</x>
+    <y>205</y>
+    <width>231</width>
+    <height>17</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=0.0 &amp;&amp; pv0&lt;1.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P):HM:M11PV.SEVR</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>11</text>
+      <width>16</width>
+      <height>16</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor11):HMPOS.DESC</pv_name>
+      <x>16</x>
+      <y>1</y>
+      <width>128</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor11):HMPOS</pv_name>
+      <x>146</x>
+      <y>1</y>
+      <width>83</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="green-16" red="0" green="224" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 13</name>
+    <x>205</x>
+    <y>220</y>
+    <width>231</width>
+    <height>17</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=0.0 &amp;&amp; pv0&lt;1.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P):HM:M12PV.SEVR</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>12</text>
+      <width>16</width>
+      <height>16</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor12):HMPOS.DESC</pv_name>
+      <x>16</x>
+      <y>1</y>
+      <width>128</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor12):HMPOS</pv_name>
+      <x>146</x>
+      <y>1</y>
+      <width>83</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="green-16" red="0" green="224" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 14</name>
+    <x>205</x>
+    <y>235</y>
+    <width>231</width>
+    <height>17</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=0.0 &amp;&amp; pv0&lt;1.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P):HM:M13PV.SEVR</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>13</text>
+      <width>16</width>
+      <height>16</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor13):HMPOS.DESC</pv_name>
+      <x>16</x>
+      <y>1</y>
+      <width>128</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor13):HMPOS</pv_name>
+      <x>146</x>
+      <y>1</y>
+      <width>83</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="green-16" red="0" green="224" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 15</name>
+    <x>205</x>
+    <y>250</y>
+    <width>231</width>
+    <height>17</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=0.0 &amp;&amp; pv0&lt;1.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P):HM:M14PV.SEVR</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>14</text>
+      <width>16</width>
+      <height>16</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor14):HMPOS.DESC</pv_name>
+      <x>16</x>
+      <y>1</y>
+      <width>128</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor14):HMPOS</pv_name>
+      <x>146</x>
+      <y>1</y>
+      <width>83</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="green-16" red="0" green="224" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 16</name>
+    <x>205</x>
+    <y>265</y>
+    <width>231</width>
+    <height>17</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=0.0 &amp;&amp; pv0&lt;1.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P):HM:M15PV.SEVR</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>15</text>
+      <width>16</width>
+      <height>16</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor15):HMPOS.DESC</pv_name>
+      <x>16</x>
+      <y>1</y>
+      <width>128</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor15):HMPOS</pv_name>
+      <x>146</x>
+      <y>1</y>
+      <width>83</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="green-16" red="0" green="224" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 17</name>
+    <x>205</x>
+    <y>280</y>
+    <width>231</width>
+    <height>17</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=0.0 &amp;&amp; pv0&lt;1.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P):HM:M16PV.SEVR</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>16</text>
+      <width>16</width>
+      <height>16</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor16):HMPOS.DESC</pv_name>
+      <x>16</x>
+      <y>1</y>
+      <width>128</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor16):HMPOS</pv_name>
+      <x>146</x>
+      <y>1</y>
+      <width>83</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="green-16" red="0" green="224" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 18</name>
+    <x>440</x>
+    <y>55</y>
+    <width>231</width>
+    <height>17</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=0.0 &amp;&amp; pv0&lt;1.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P):HM:M17PV.SEVR</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>17</text>
+      <width>16</width>
+      <height>16</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor17):HMPOS.DESC</pv_name>
+      <x>16</x>
+      <y>1</y>
+      <width>128</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor17):HMPOS</pv_name>
+      <x>146</x>
+      <y>1</y>
+      <width>83</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="green-16" red="0" green="224" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 19</name>
+    <x>440</x>
+    <y>70</y>
+    <width>231</width>
+    <height>17</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=0.0 &amp;&amp; pv0&lt;1.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P):HM:M18PV.SEVR</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>18</text>
+      <width>16</width>
+      <height>16</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor18):HMPOS.DESC</pv_name>
+      <x>16</x>
+      <y>1</y>
+      <width>128</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor18):HMPOS</pv_name>
+      <x>146</x>
+      <y>1</y>
+      <width>83</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="green-16" red="0" green="224" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 20</name>
+    <x>440</x>
+    <y>85</y>
+    <width>231</width>
+    <height>17</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=0.0 &amp;&amp; pv0&lt;1.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P):HM:M19PV.SEVR</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>19</text>
+      <width>16</width>
+      <height>16</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor19):HMPOS.DESC</pv_name>
+      <x>16</x>
+      <y>1</y>
+      <width>128</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor19):HMPOS</pv_name>
+      <x>146</x>
+      <y>1</y>
+      <width>83</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="green-16" red="0" green="224" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 21</name>
+    <x>440</x>
+    <y>100</y>
+    <width>231</width>
+    <height>17</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=0.0 &amp;&amp; pv0&lt;1.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P):HM:M20PV.SEVR</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>20</text>
+      <width>16</width>
+      <height>16</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor20):HMPOS.DESC</pv_name>
+      <x>16</x>
+      <y>1</y>
+      <width>128</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor20):HMPOS</pv_name>
+      <x>146</x>
+      <y>1</y>
+      <width>83</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="green-16" red="0" green="224" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 22</name>
+    <x>440</x>
+    <y>115</y>
+    <width>231</width>
+    <height>17</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=0.0 &amp;&amp; pv0&lt;1.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P):HM:M21PV.SEVR</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>21</text>
+      <width>16</width>
+      <height>16</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor21):HMPOS.DESC</pv_name>
+      <x>16</x>
+      <y>1</y>
+      <width>128</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor21):HMPOS</pv_name>
+      <x>146</x>
+      <y>1</y>
+      <width>83</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="green-16" red="0" green="224" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 23</name>
+    <x>440</x>
+    <y>130</y>
+    <width>231</width>
+    <height>17</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=0.0 &amp;&amp; pv0&lt;1.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P):HM:M22PV.SEVR</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>22</text>
+      <width>16</width>
+      <height>16</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor22):HMPOS.DESC</pv_name>
+      <x>16</x>
+      <y>1</y>
+      <width>128</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor22):HMPOS</pv_name>
+      <x>146</x>
+      <y>1</y>
+      <width>83</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="green-16" red="0" green="224" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 24</name>
+    <x>440</x>
+    <y>145</y>
+    <width>231</width>
+    <height>17</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=0.0 &amp;&amp; pv0&lt;1.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P):HM:M23PV.SEVR</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>23</text>
+      <width>16</width>
+      <height>16</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor23):HMPOS.DESC</pv_name>
+      <x>16</x>
+      <y>1</y>
+      <width>128</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor23):HMPOS</pv_name>
+      <x>146</x>
+      <y>1</y>
+      <width>83</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="green-16" red="0" green="224" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 25</name>
+    <x>440</x>
+    <y>160</y>
+    <width>231</width>
+    <height>17</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=0.0 &amp;&amp; pv0&lt;1.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P):HM:M24PV.SEVR</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>24</text>
+      <width>16</width>
+      <height>16</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor24):HMPOS.DESC</pv_name>
+      <x>16</x>
+      <y>1</y>
+      <width>128</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor24):HMPOS</pv_name>
+      <x>146</x>
+      <y>1</y>
+      <width>83</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="green-16" red="0" green="224" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 26</name>
+    <x>440</x>
+    <y>175</y>
+    <width>231</width>
+    <height>17</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=0.0 &amp;&amp; pv0&lt;1.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P):HM:M25PV.SEVR</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>25</text>
+      <width>16</width>
+      <height>16</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor25):HMPOS.DESC</pv_name>
+      <x>16</x>
+      <y>1</y>
+      <width>128</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor25):HMPOS</pv_name>
+      <x>146</x>
+      <y>1</y>
+      <width>83</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="green-16" red="0" green="224" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 27</name>
+    <x>440</x>
+    <y>190</y>
+    <width>231</width>
+    <height>17</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=0.0 &amp;&amp; pv0&lt;1.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P):HM:M26PV.SEVR</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>26</text>
+      <width>16</width>
+      <height>16</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor26):HMPOS.DESC</pv_name>
+      <x>16</x>
+      <y>1</y>
+      <width>128</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor26):HMPOS</pv_name>
+      <x>146</x>
+      <y>1</y>
+      <width>83</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="green-16" red="0" green="224" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 28</name>
+    <x>440</x>
+    <y>205</y>
+    <width>231</width>
+    <height>17</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=0.0 &amp;&amp; pv0&lt;1.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P):HM:M27PV.SEVR</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>27</text>
+      <width>16</width>
+      <height>16</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor27):HMPOS.DESC</pv_name>
+      <x>16</x>
+      <y>1</y>
+      <width>128</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor27):HMPOS</pv_name>
+      <x>146</x>
+      <y>1</y>
+      <width>83</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="green-16" red="0" green="224" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 29</name>
+    <x>440</x>
+    <y>220</y>
+    <width>231</width>
+    <height>17</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=0.0 &amp;&amp; pv0&lt;1.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P):HM:M28PV.SEVR</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>28</text>
+      <width>16</width>
+      <height>16</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor28):HMPOS.DESC</pv_name>
+      <x>16</x>
+      <y>1</y>
+      <width>128</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor28):HMPOS</pv_name>
+      <x>146</x>
+      <y>1</y>
+      <width>83</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="green-16" red="0" green="224" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 30</name>
+    <x>440</x>
+    <y>235</y>
+    <width>231</width>
+    <height>17</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=0.0 &amp;&amp; pv0&lt;1.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P):HM:M29PV.SEVR</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>29</text>
+      <width>16</width>
+      <height>16</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor29):HMPOS.DESC</pv_name>
+      <x>16</x>
+      <y>1</y>
+      <width>128</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor29):HMPOS</pv_name>
+      <x>146</x>
+      <y>1</y>
+      <width>83</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="green-16" red="0" green="224" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 31</name>
+    <x>440</x>
+    <y>250</y>
+    <width>231</width>
+    <height>17</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=0.0 &amp;&amp; pv0&lt;1.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P):HM:M30PV.SEVR</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>30</text>
+      <width>16</width>
+      <height>16</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor30):HMPOS.DESC</pv_name>
+      <x>16</x>
+      <y>1</y>
+      <width>128</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor30):HMPOS</pv_name>
+      <x>146</x>
+      <y>1</y>
+      <width>83</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="green-16" red="0" green="224" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 32</name>
+    <x>440</x>
+    <y>265</y>
+    <width>231</width>
+    <height>17</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=0.0 &amp;&amp; pv0&lt;1.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P):HM:M31PV.SEVR</pv_name>
+      </rule>
+    </rules>
+    <widget type="label" version="2.0.0">
+      <name>EDM activeXTextClass</name>
+      <text>31</text>
+      <width>16</width>
+      <height>16</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>false</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor31):HMPOS.DESC</pv_name>
+      <x>16</x>
+      <y>1</y>
+      <width>128</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="black-14" red="0" green="0" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM TextupdateClass</name>
+      <pv_name>$(Motor31):HMPOS</pv_name>
+      <x>146</x>
+      <y>1</y>
+      <width>83</width>
+      <height>13</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="10.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="green-16" red="0" green="224" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>EDM activeXTextClass</name>
+    <text>Debug? (Pause after every stage)</text>
+    <x>200</x>
+    <y>305</y>
+    <width>250</width>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="12.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <horizontal_alignment>2</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="combo" version="2.0.0">
+    <name>EDM activeMenuButtonClass</name>
+    <pv_name>$(P):HM:DEBUG</pv_name>
+    <x>455</x>
+    <y>305</y>
+    <width>130</width>
+    <height>20</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="12.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Controller" red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 33</name>
+    <x>10</x>
+    <y>180</y>
+    <width>171</width>
+    <height>26</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=8.0 &amp;&amp; pv0&lt;9.0">
+          <value>false</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>true</value>
+        </exp>
+        <pv_name>$(P):HM:STATUS</pv_name>
+      </rule>
+    </rules>
+    <widget type="textupdate" version="2.0.0">
+      <name>EDM activeXTextDspClass:noedit</name>
+      <pv_name>$(P):HM:TIMEOUT</pv_name>
+      <width>170</width>
+      <height>25</height>
+      <font>
+        <font family="Liberation Sans" style="BOLD" size="14.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="green-16" red="0" green="224" blue="0">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+        </color>
+      </background_color>
+      <horizontal_alignment>1</horizontal_alignment>
+      <vertical_alignment>1</vertical_alignment>
+    </widget>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM activeMessageButtonClass</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P):HM:RESUME.PROC</pv_name>
+        <value>1</value>
+        <description>Click to Resume</description>
+      </action>
+    </actions>
+    <text>Click to Resume</text>
+    <x>10</x>
+    <y>180</y>
+    <width>170</width>
+    <height>25</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="green-19" red="0" green="128" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=8.0 &amp;&amp; pv0&lt;9.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P):HM:STATUS</pv_name>
+      </rule>
+    </rules>
+  </widget>
+</display>

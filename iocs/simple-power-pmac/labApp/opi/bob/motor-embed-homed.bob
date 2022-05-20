@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>motor-embed-homed</name>
+  <x>384</x>
+  <y>971</y>
+  <width>229</width>
+  <height>21</height>
+  <background_color>
+    <color name="GLOBAL canvas" red="200" green="200" blue="200">
+    </color>
+  </background_color>
+  <grid_step_x>5</grid_step_x>
+  <grid_step_y>5</grid_step_y>
+  <widget type="byte_monitor" version="2.0.0">
+    <name>EDM ByteClass</name>
+    <pv_name>$(motor).MSTA</pv_name>
+    <x>206</x>
+    <width>19</width>
+    <height>19</height>
+    <startBit>14</startBit>
+    <numBits>1</numBits>
+    <horizontal>false</horizontal>
+    <square>true</square>
+    <off_color>
+      <color name="green-19" red="0" green="128" blue="0">
+      </color>
+    </off_color>
+    <on_color>
+      <color name="Monitor: NORMAL" red="0" green="255" blue="0">
+      </color>
+    </on_color>
+    <foreground_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM relatedDisplayClass</name>
+    <actions>
+      <action type="open_display">
+        <file>motor.bob</file>
+        <target>tab</target>
+      </action>
+      <action type="open_display">
+        <file>motor-embed-homed-tooltip.bob</file>
+        <target>tab</target>
+      </action>
+    </actions>
+    <text>$(label)</text>
+    <width>108</width>
+    <height>20</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="12.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="brown-43" red="160" green="110" blue="60">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>EDM TextupdateClass</name>
+    <pv_name>$(motor).RBV</pv_name>
+    <x>110</x>
+    <width>93</width>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="green-16" red="0" green="224" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="grey-12" red="70" green="70" blue="70">
+      </color>
+    </background_color>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+</display>

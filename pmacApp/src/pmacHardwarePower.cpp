@@ -58,6 +58,7 @@ pmacHardwarePower::parseGlobalStatus(const std::string &statusString, globalStat
   static const char *functionName = "parseGlobalStatus";
 
   debug(DEBUG_VARIABLE, functionName, "Status string", statusString);
+  //printf("statusString is %s\n", statusString.c_str());
   if (statusString == "") {
     debug(DEBUG_ERROR, functionName, "Problem reading global status command, returned",
           statusString);

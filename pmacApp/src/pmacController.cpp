@@ -1760,8 +1760,9 @@ asynStatus pmacController::fastUpdate(pmacCommandStore *sPtr) {
     hardwareProblem = ((gStatus & PMAC_HARDWARE_PROB) != 0);
     status = setIntegerParam(this->PMAC_C_GlobalStatus_, hardwareProblem);
     if (hardwareProblem) {
-      debug(DEBUG_ERROR, functionName, "*** Hardware Problem *** global status [???]",
-            (int) gStatus);
+//ZY: Comment Debug log Temp
+//      debug(DEBUG_ERROR, functionName, "*** Hardware Problem *** global status [???]",
+//            gStatus);
     }
   }
 

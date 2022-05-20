@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>pmacAxis</name>
+  <x>133</x>
+  <y>466</y>
+  <width>920</width>
+  <height>20</height>
+  <background_color>
+    <color name="GLOBAL canvas" red="200" green="200" blue="200">
+    </color>
+  </background_color>
+  <grid_step_x>5</grid_step_x>
+  <grid_step_y>5</grid_step_y>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 0</name>
+    <x>865</x>
+    <width>21</width>
+    <height>21</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=0.0 &amp;&amp; pv0&lt;1.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>$(pmac):PMACTYPE</pv_name>
+      </rule>
+    </rules>
+    <widget type="action_button" version="3.0.0">
+      <name>EDM relatedDisplayClass</name>
+      <actions>
+        <action type="open_display">
+          <file>powerPmacStatusAxis.bob</file>
+          <macros>
+            <A>AXIS$(axis)</A>
+            <M>$(pmac)</M>
+          </macros>
+          <target>tab</target>
+        </action>
+      </actions>
+      <text></text>
+      <width>20</width>
+      <height>20</height>
+      <font>
+        <font family="Liberation Sans" style="BOLD" size="12.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="brown-43" red="160" green="110" blue="60">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 1</name>
+    <x>865</x>
+    <width>21</width>
+    <height>21</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="EDM visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0&gt;=1.0 &amp;&amp; pv0&lt;100.0">
+          <value>true</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>false</value>
+        </exp>
+        <pv_name>$(pmac):PMACTYPE</pv_name>
+      </rule>
+    </rules>
+    <widget type="action_button" version="3.0.0">
+      <name>EDM relatedDisplayClass</name>
+      <actions>
+        <action type="open_display">
+          <file>pmacStatusAxis.bob</file>
+          <macros>
+            <A>AXIS$(axis)</A>
+            <M>$(pmac)</M>
+          </macros>
+          <target>tab</target>
+        </action>
+      </actions>
+      <text></text>
+      <width>20</width>
+      <height>20</height>
+      <font>
+        <font family="Liberation Sans" style="BOLD" size="12.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color name="brown-43" red="160" green="110" blue="60">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color name="GLOBAL canvas" red="200" green="200" blue="200">
+        </color>
+      </background_color>
+    </widget>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>EDM TextupdateClass</name>
+    <pv_name>$(pmac):M$(axis):CsRaw_RBV</pv_name>
+    <x>320</x>
+    <width>35</width>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="12.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="green-16" red="0" green="224" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>0</precision>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>EDM activeXTextClass</name>
+    <text>$(axis)</text>
+    <y>2</y>
+    <width>20</width>
+    <foreground_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>EDM TextupdateClass</name>
+    <pv_name>$(pmac):M$(axis):CsAxis_RBV</pv_name>
+    <x>570</x>
+    <width>30</width>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="12.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="green-16" red="0" green="224" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>0</precision>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>EDM TextupdateClass</name>
+    <pv_name>$(pmac):M$(axis):CsPort_RBV</pv_name>
+    <x>445</x>
+    <width>70</width>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="12.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="green-16" red="0" green="224" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>0</precision>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>EDM TextentryClass</name>
+    <pv_name>$(pmac):M$(axis):CsAxis</pv_name>
+    <x>530</x>
+    <width>30</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="12.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Controller" red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="combo" version="2.0.0">
+    <name>EDM activeMenuButtonClass</name>
+    <pv_name>$(pmac):M$(axis):CsPort</pv_name>
+    <x>370</x>
+    <width>70</width>
+    <height>20</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="12.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>EDM TextupdateClass</name>
+    <pv_name>$(pmac):AXIS$(axis):DESC</pv_name>
+    <x>30</x>
+    <width>275</width>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="12.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="green-16" red="0" green="224" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>0</precision>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>EDM TextentryClass</name>
+    <pv_name>$(pmac):M$(axis):DirectDemand</pv_name>
+    <x>615</x>
+    <width>60</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="12.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Controller" red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>3</precision>
+    <show_units>false</show_units>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM activeMessageButtonClass</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(pmac):M$(axis):KILL.PROC</pv_name>
+        <value>1</value>
+        <description>Kill</description>
+      </action>
+    </actions>
+    <text>Kill</text>
+    <x>785</x>
+    <width>40</width>
+    <height>20</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="12.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="Controller" red="0" green="0" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="grey-4" red="187" green="187" blue="187">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>EDM TextupdateClass</name>
+    <pv_name>$(pmac):M$(axis).RBV</pv_name>
+    <x>680</x>
+    <width>60</width>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="12.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="green-16" red="0" green="224" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="Wid-bg/Anno-pri" red="105" green="105" blue="105">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>3</precision>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>EDM relatedDisplayClass</name>
+    <actions>
+      <action type="open_display">
+        <file>motor.bob</file>
+        <macros>
+          <motor>$(pmac):M$(axis)</motor>
+        </macros>
+        <target>tab</target>
+      </action>
+    </actions>
+    <text></text>
+    <x>890</x>
+    <width>20</width>
+    <height>20</height>
+    <font>
+      <font family="Liberation Sans" style="BOLD" size="12.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color name="brown-43" red="160" green="110" blue="60">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color name="GLOBAL canvas" red="200" green="200" blue="200">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="byte_monitor" version="2.0.0">
+    <name>EDM ByteClass</name>
+    <pv_name>$(pmac):AXIS$(axis):status1</pv_name>
+    <x>830</x>
+    <width>17</width>
+    <height>17</height>
+    <startBit>11</startBit>
+    <numBits>1</numBits>
+    <horizontal>false</horizontal>
+    <square>true</square>
+    <off_color>
+      <color name="green-19" red="0" green="128" blue="0">
+      </color>
+    </off_color>
+    <on_color>
+      <color name="Monitor: NORMAL" red="0" green="255" blue="0">
+      </color>
+    </on_color>
+    <foreground_color>
+      <color name="black-14" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>EDM Group 2</name>
+    <x>745</x>
+    <width>29</width>
+    <height>22</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="embedded" version="2.0.0">
+      <name>EDM activeSymbolClass</name>
+      <file>symbols-traffic-light-symbol.bob</file>
+      <x>-1</x>
+      <width>20</width>
+      <height>20</height>
+      <resize>3</resize>
+      <group_name>EDM Group 0</group_name>
+      <scripts>
+        <script file="EmbeddedPy">
+          <text><![CDATA[# pvs[0] = $(pmac):M$(axis).DMOV
+from org.csstudio.display.builder.runtime.script import PVUtil
+val = PVUtil.getDouble(pvs[0])
+if 0.0 <= val < 0.0:
+    widget.setPropertyValue('group_name', 'EDM Group 0')
+elif 0.0 <= val < 0.0:
+    widget.setPropertyValue('group_name', 'EDM Group 1')
+elif 0.0 <= val < 0.0:
+    widget.setPropertyValue('group_name', 'EDM Group 2')
+elif 0.0 <= val < 0.0:
+    widget.setPropertyValue('group_name', 'EDM Group 3')
+elif 1.0 <= val < 2.0:
+    widget.setPropertyValue('group_name', 'EDM Group 4')
+elif 0.0 <= val < 1.0:
+    widget.setPropertyValue('group_name', 'EDM Group 5')
+else:
+    widget.setPropertyValue('group_name', 'EDM Group 0')
+]]></text>
+          <pv_name>$(pmac):M$(axis).DMOV</pv_name>
+        </script>
+      </scripts>
+      <tooltip>$(pmac):M$(axis).DMOV</tooltip>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>EDM Group 3</name>
+      <x>-1</x>
+      <width>29</width>
+      <height>22</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <rules>
+        <rule name="EDM visibility" prop_id="visible" out_exp="false">
+          <exp bool_exp="pv0&gt;=2.0 &amp;&amp; pv0&lt;3.0">
+            <value>true</value>
+          </exp>
+          <exp bool_exp="true">
+            <value>false</value>
+          </exp>
+          <pv_name>=`$(pmac):M$(axis):ELOSS`&amp;2</pv_name>
+        </rule>
+      </rules>
+      <widget type="label" version="2.0.0">
+        <name>EDM activeXTextClass</name>
+        <text>ALoss</text>
+        <x>-1</x>
+        <width>28</width>
+        <font>
+          <font family="Liberation Sans" style="REGULAR" size="10.0">
+          </font>
+        </font>
+        <foreground_color>
+          <color name="black-14" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="red-21" red="224" green="0" blue="0">
+          </color>
+        </background_color>
+        <transparent>false</transparent>
+        <horizontal_alignment>1</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>EDM Group 4</name>
+      <x>-1</x>
+      <width>29</width>
+      <height>22</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <rules>
+        <rule name="EDM visibility" prop_id="visible" out_exp="false">
+          <exp bool_exp="pv0&gt;=4.0 &amp;&amp; pv0&lt;5.0">
+            <value>true</value>
+          </exp>
+          <exp bool_exp="true">
+            <value>false</value>
+          </exp>
+          <pv_name>=`$(pmac):M$(axis):ELOSS`&amp;4</pv_name>
+        </rule>
+      </rules>
+      <widget type="label" version="2.0.0">
+        <name>EDM activeXTextClass</name>
+        <text>SFail</text>
+        <x>-1</x>
+        <width>28</width>
+        <font>
+          <font family="Liberation Sans" style="REGULAR" size="10.0">
+          </font>
+        </font>
+        <foreground_color>
+          <color name="black-14" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="red-21" red="224" green="0" blue="0">
+          </color>
+        </background_color>
+        <transparent>false</transparent>
+        <horizontal_alignment>1</horizontal_alignment>
+        <vertical_alignment>1</vertical_alignment>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>EDM Group 5</name>
+      <x>-1</x>
+      <width>29</width>
+      <height>22</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <rules>
+        <rule name="EDM visibility" prop_id="visible" out_exp="false">
+          <exp bool_exp="pv0&gt;=1.0 &amp;&amp; pv0&lt;2.0">
+            <value>true</value>
+          </exp>
+          <exp bool_exp="true">
+            <value>false</value>
+          </exp>
+          <pv_name>=`$(pmac):M$(axis):ELOSS`&amp;1</pv_name>
+        </rule>
+      </rules>
+      <widget type="action_button" version="3.0.0">
+        <name>EDM activeMessageButtonClass</name>
+        <actions>
+          <action type="write_pv">
+            <pv_name>$(pmac):M$(axis):ELOSSRC.A</pv_name>
+            <value>0</value>
+            <description>Eloss</description>
+          </action>
+        </actions>
+        <text>Eloss</text>
+        <x>-1</x>
+        <width>28</width>
+        <height>20</height>
+        <font>
+          <font family="Liberation Sans" style="REGULAR" size="8.0">
+          </font>
+        </font>
+        <foreground_color>
+          <color name="black-14" red="0" green="0" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color name="red-21" red="224" green="0" blue="0">
+          </color>
+        </background_color>
+      </widget>
+    </widget>
+  </widget>
+</display>

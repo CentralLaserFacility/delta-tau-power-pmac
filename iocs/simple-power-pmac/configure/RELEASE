@@ -5,5 +5,5 @@ include $(TOP)/../../configure/RELEASE.$(EPICS_HOST_ARCH).Common
 -include $(TOP)/../../configure/RELEASE.local.$(EPICS_HOST_ARCH)
 -include $(TOP)/../../configure/RELEASE.local
 
-# ASYN=       $(SUPPORT)/asyn/4-41
+ASYN=       $(SUPPORT)/asyn/current
 $(info ASYN = $(ASYN))

@@ -92,7 +92,7 @@ pmacDebugger::debug(int level, const std::string &method, const std::string &mes
   if (level == 0 || (level & level_) > 0) {
     epicsTimeGetCurrent(&ts);
     epicsTimeToStrftime(tBuff, 32, "%Y/%m/%d %H:%M:%S.%03f", &ts);
-    printf("%s %s::%s %s => %d\n", tBuff, owner_.c_str(), method.c_str(), message.c_str(), value);
+    printf("%s %s::%s %s =====> %d\n", tBuff, owner_.c_str(), method.c_str(), message.c_str(), value);
   }
 }
 

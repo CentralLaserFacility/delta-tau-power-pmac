@@ -14,7 +14,8 @@ if [ -n "$1" ]; then
     }
 fi
 
-export INSTALL=$(realpath $(dirname ${BASH_SOURCE[0]})/../..)
+#export INSTALL=$(realpath $(dirname ${BASH_SOURCE[0]})/../..)
+export INSTALL=/home/qpq52474/source/repos/pmac/iocs/simple-power-pmac
 
-
+chmod +x $INSTALL/bin/linux-x86_64/lab
 exec ./lab stlab.boot

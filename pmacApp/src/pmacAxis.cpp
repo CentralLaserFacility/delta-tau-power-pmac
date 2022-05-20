@@ -244,7 +244,7 @@ void pmacAxis::setResolution(double new_resolution)
   debug(DEBUG_TRACE, functionName, "Setting axis resolution", new_resolution);
   this->resolution_ = new_resolution;
   if (this->connected_){
-    sprintf(command, "P%d=%.12f", p_var, this->resolution_);
+    sprintf(command, "P%d=%f", p_var, this->resolution_);
     debug(DEBUG_TRACE, functionName, "Axis resolution P variable command", command);
     pC_->axisWriteRead(command, response);
   }
@@ -264,7 +264,7 @@ void pmacAxis::setOffset(double new_offset)
   debug(DEBUG_TRACE, functionName, "Setting axis offset", new_offset);
   this->offset_ = new_offset;
   if (this->connected_){
-    sprintf(command, "P%d=%.12f", p_var, this->offset_);
+    sprintf(command, "P%d=%f", p_var, this->offset_);
     debug(DEBUG_TRACE, functionName, "Axis offset P variable command", command);
     pC_->axisWriteRead(command, response);
   }
@@ -717,7 +717,7 @@ asynStatus pmacAxis::getAxisStatus(pmacCommandStore *sPtr) {
         // Parse the position
         sprintf(key, "#%dP", axisNo_);
         value = sPtr->readValue(key);
-        nvals = sscanf(value.c_str(), "%lf", &position);
+        nvals = sscanf(value.c_str(), "%lf", &enc_position);
         if (nvals != 1) {
             asynPrint(pC_->pasynUserSelf, ASYN_TRACE_ERROR,
                       "%s: Failed to parse position. Key: %s  Value: %s\n",
@@ -734,7 +734,7 @@ asynStatus pmacAxis::getAxisStatus(pmacCommandStore *sPtr) {
             sprintf(key, "#%dF", axisNo_);
         }
         value = sPtr->readValue(key);
-        nvals = sscanf(value.c_str(), "%lf", &enc_position);
+        nvals = sscanf(value.c_str(), "%lf", &position);
         if (nvals != 1) {
             asynPrint(pC_->pasynUserSelf, ASYN_TRACE_ERROR,
                       "%s: Failed to parse following error. Key: %s  Value: %s\n",
@@ -884,7 +884,7 @@ asynStatus pmacAxis::getAxisStatus(pmacCommandStore *sPtr) {
         }
 
         // if the motor stopped in an unexpected fashion, make sure the CS demands are reset
-        if ( axStatus.followingError_ ||
+        if (!amp_enabled_ || axStatus.followingError_ || !axStatus.power_||
                 axStatus.lowLimit_|| axStatus.highLimit_) {
             // make sure that pmacController->makeCSDemandsConsistent will reset the demand for all axes
             int csNum = getAxisCSNo();
